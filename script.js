@@ -3,8 +3,10 @@ const keyboard = document.getElementById('keyboard');
 const startScreen = document.getElementById('start-screen');
 const gameContainer = document.getElementById('game-container');
 const playBtn = document.getElementById('play-btn');
+const resultScreen = document.createElement('div'); // Create result screen dynamically
 let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
+let currentClueData = {}; // Store the current clue data with definitions
 
 // Fetch the clue from the backend server based on difficulty level
 function fetchClue(level) {
@@ -19,6 +21,7 @@ function fetchClue(level) {
       // Update the clue
       document.querySelector('#clue-box p').textContent = data.clue;
       correctAnswer = data.answer.toUpperCase();
+      currentClueData = data; // Save clue data for definitions
 
       // Generate the answer boxes
       generateAnswerBoxes(correctAnswer);
@@ -71,16 +74,37 @@ function resetGame() {
   currentIndex = 0;
 }
 
+// Display result screen
+function showResultScreen(isCorrect) {
+  resultScreen.className = "results-screen";
+  resultScreen.innerHTML = `
+    <div class="results-banner">
+      <h2>${isCorrect ? "Correct!" : "Wrong!"}</h2>
+      <div class="answer-display">${correctAnswer}</div>
+    </div>
+    <div class="definitions">
+      <h3>Definitions</h3>
+      <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
+      <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
+    </div>
+    <button id="play-again-btn">Play Again</button>
+  `;
+  document.body.appendChild(resultScreen);
+
+  // Add event listener for the "Play Again" button
+  document.getElementById('play-again-btn').addEventListener('click', () => {
+    resultScreen.remove();
+    resetGame();
+  });
+}
+
 // Submit answer function
 function submitAnswer() {
   const userAnswer = Array.from(document.querySelectorAll('.letter-box'))
     .map(box => box.textContent)
     .join('');
-  if (userAnswer === correctAnswer.replace(/ /g, "")) {
-    alert("Correct! 🎉");
-  } else {
-    alert("Incorrect. Try again!");
-  }
+  const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
+  showResultScreen(isCorrect);
 }
 
 // Create on-screen keyboard
