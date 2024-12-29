@@ -1,8 +1,11 @@
 const letterInputs = document.querySelectorAll('.letter-input');
+const keyboard = document.getElementById('keyboard');
+let correctAnswer = ""; // Store the correct answer fetched from the backend
 
 // Auto-advance cursor as the user types
 letterInputs.forEach((input, index) => {
   input.addEventListener('input', () => {
+    input.value = input.value.toUpperCase(); // Ensure uppercase
     if (input.value.length === 1 && index < letterInputs.length - 1) {
       letterInputs[index + 1].focus();
     }
@@ -16,37 +19,19 @@ letterInputs.forEach((input, index) => {
   });
 });
 
-// Add ENTER button functionality
-document.getElementById('submit-btn').addEventListener('click', () => {
-  const answer = Array.from(letterInputs)
-    .map(input => input.value.toUpperCase())
-    .join('');
-  console.log("Your answer:", answer); // Replace this with actual game logic
-});
-
-// Fetch the clue from the back-end server
-fetch('https://twyn.onrender.com/clue') // Replace with your Render URL
+// Fetch the clue from the backend server
+fetch('https://twyn.onrender.com/clue')
   .then(response => response.json())
   .then(data => {
-    // Update the clue in the game
+    // Update the clue and store the correct answer
     document.querySelector('#clue-box p').textContent = data.clue;
-
-    // Log the answer (or use it for validation)
-    console.log("Correct Answer:", data.answer); 
+    correctAnswer = data.answer.toUpperCase();
+    console.log("Correct Answer:", correctAnswer); // Debugging
   })
   .catch(error => {
     console.error("Error fetching clue:", error);
+    document.querySelector('#clue-box p').textContent = "Failed to load clue. Try again.";
   });
-
-const letterInputs = document.querySelectorAll('.letter-input');
-const keyboard = document.getElementById('keyboard');
-
-// Auto-uppercase inputs
-letterInputs.forEach(input => {
-  input.addEventListener('input', () => {
-    input.value = input.value.toUpperCase();
-  });
-});
 
 // Create on-screen keyboard
 const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
@@ -85,10 +70,25 @@ function resetGame() {
   letterInputs.forEach(input => {
     input.value = '';
   });
+  fetch('https://twyn.onrender.com/clue')
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector('#clue-box p').textContent = data.clue;
+      correctAnswer = data.answer.toUpperCase();
+      console.log("New Correct Answer:", correctAnswer); // Debugging
+    })
+    .catch(error => {
+      console.error("Error fetching clue:", error);
+      document.querySelector('#clue-box p').textContent = "Failed to load clue. Try again.";
+    });
 }
 
 // Submit answer function
 function submitAnswer() {
-  const answer = Array.from(letterInputs).map(input => input.value).join('');
-  console.log("Your answer:", answer); // Replace with validation logic
+  const userAnswer = Array.from(letterInputs).map(input => input.value).join('');
+  if (userAnswer === correctAnswer) {
+    alert("Correct! 🎉");
+  } else {
+    alert("Incorrect. Try again!");
+  }
 }
