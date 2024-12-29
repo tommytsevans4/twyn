@@ -37,7 +37,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7uxmvDZrUGOBxyW6VaPe_47WlktrowPtErqX4E76zD8dxKCrTXDOJi2uiOy-3PcGEbIDxZQHW_yD5/pub?gid=0&single=true&output=csv';
+const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7uxmvDZrUGOBxyW6VaPe_47WlktrowPtErqX4E76zD8dxKCrTXDOJi2uiOy-3PcGEbIDxZQHW_yD5/pub?output=csv';
 
 // Endpoint to fetch a random clue
 app.get('/clue', async (req, res) => {
