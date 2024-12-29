@@ -17,7 +17,7 @@ function fetchClue() {
       document.querySelector('#clue-box p').textContent = data.clue;
       correctAnswer = data.answer.toUpperCase();
 
-      // Dynamically generate the answer boxes
+      // Generate the answer boxes
       generateAnswerBoxes(correctAnswer);
     })
     .catch(error => {
@@ -26,7 +26,7 @@ function fetchClue() {
     });
 }
 
-// Generate answer boxes based on the clue's answer
+// Generate answer boxes based on the given answer
 function generateAnswerBoxes(answer) {
   answerBox.innerHTML = ""; // Clear previous boxes
   answer.split('').forEach((char) => {
@@ -37,7 +37,7 @@ function generateAnswerBoxes(answer) {
     } else {
       const box = document.createElement('span');
       box.className = "letter-box";
-      box.textContent = ""; // Empty box for user input
+      box.textContent = ""; // Empty placeholder
       answerBox.appendChild(box);
     }
   });
@@ -52,14 +52,20 @@ function handleKeyboardInput(key) {
   }
 }
 
-// Reset game function
+// Handle backspace key input
+function handleBackspace() {
+  const letterBoxes = document.querySelectorAll('.letter-box');
+  if (currentIndex > 0) {
+    currentIndex--;
+    letterBoxes[currentIndex].textContent = ""; // Clear the previous box
+  }
+}
+
+// Reset game function (does not reload clue)
 function resetGame() {
   // Clear all boxes
   document.querySelectorAll('.letter-box').forEach(box => (box.textContent = ""));
   currentIndex = 0;
-
-  // Fetch a new clue and reset the game
-  fetchClue();
 }
 
 // Submit answer function
@@ -74,9 +80,11 @@ function submitAnswer() {
   }
 }
 
-// Initialize the on-screen keyboard
+// Create on-screen keyboard
 function createKeyboard() {
   const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
+  keyboard.innerHTML = ""; // Clear existing keyboard, if any
+
   keys.forEach(key => {
     const button = document.createElement('button');
     button.textContent = key;
@@ -84,6 +92,13 @@ function createKeyboard() {
     button.addEventListener('click', () => handleKeyboardInput(key));
     keyboard.appendChild(button);
   });
+
+  // Add Backspace button
+  const backspaceButton = document.createElement('button');
+  backspaceButton.textContent = "Backspace";
+  backspaceButton.classList.add('key', 'special');
+  backspaceButton.addEventListener('click', handleBackspace);
+  keyboard.appendChild(backspaceButton);
 
   // Add Reset button
   const resetButton = document.createElement('button');
@@ -102,8 +117,8 @@ function createKeyboard() {
 
 // Initialize the game
 function initGame() {
-  fetchClue();
-  createKeyboard();
+  fetchClue(); // Fetch the clue only once
+  createKeyboard(); // Create the on-screen keyboard
 }
 
 // Start the game
