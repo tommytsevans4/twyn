@@ -4,12 +4,22 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  touch-action: manipulation; /* Prevents double-tap zoom */
 }
 
 header {
   background-color: #2F667F;
   color: white;
-  padding: 15px 0;
+  padding: 10px 20px; /* Reduced padding for smaller header */
+  text-align: left;
+  display: flex;
+  align-items: center; /* Vertically center content */
+  height: 50px; /* Reduced height */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 #game-container {
@@ -83,7 +93,43 @@ header {
 }
 
 .key.special {
-  grid-column: span 2; /* Make Reset, Backspace, and Enter buttons wider */
+  grid-column: span 2; /* Make Reset, Del, and Enter buttons wider */
+}
+
+#start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#start-screen .description {
+  font-size: 1rem;
+  margin: 20px;
+}
+
+#start-screen .level-selector {
+  margin: 20px 0;
+}
+
+#start-screen select {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+#play-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #2F667F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 600px) {
@@ -101,5 +147,10 @@ header {
 
   #keyboard {
     padding: 0 15px; /* Increased padding for smaller screens */
+  }
+
+  header {
+    padding: 8px 15px;
+    height: 40px; /* Reduced height for mobile screens */
   }
 }
