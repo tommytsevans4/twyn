@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   background-color: #f4f4f9;
   text-align: center;
   margin: 0;
@@ -7,13 +7,13 @@ body {
 }
 
 header {
-  background-color: #345678;
+  background-color: #2F667F;
   color: white;
   padding: 15px 0;
 }
 
 #clue-box {
-  background-color: #56789a;
+  background-color: #2F667F;
   color: white;
   padding: 10px;
   margin: 20px;
@@ -38,6 +38,7 @@ header {
   height: 40px;
   font-size: 1.5rem;
   text-align: center;
+  text-transform: uppercase; /* Makes input uppercase */
   border: 2px solid #ccc;
   border-radius: 5px;
 }
@@ -50,17 +51,28 @@ span {
   height: 40px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #345678;
+  color: #2F667F;
   margin: 0 5px;
 }
 
-button {
+#keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  justify-content: center;
   margin-top: 20px;
-  padding: 10px 20px;
+}
+
+.key {
+  padding: 10px;
+  background-color: #ddd;
   font-size: 1rem;
-  background-color: #345678;
-  color: white;
-  border: none;
+  border: 2px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
+  text-transform: uppercase;
+}
+
+#keyboard .key.special {
+  grid-column: span 2; /* Makes Reset and Enter buttons wider */
 }
