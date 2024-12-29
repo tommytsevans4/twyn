@@ -154,3 +154,54 @@ header h1 {
     height: 40px; /* Reduced height for mobile screens */
   }
 }
+
+.results-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2F667F;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+}
+
+.results-banner h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.answer-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #467d92;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.definitions h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.definitions p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+#play-again-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #2F667F;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
