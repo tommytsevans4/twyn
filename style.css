@@ -69,6 +69,7 @@ header {
   gap: 5px;
   justify-content: center;
   margin: 20px 0;
+  padding: 0 10px; /* Add padding to the keyboard to prevent it from touching screen edges */
 }
 
 .key {
@@ -82,7 +83,7 @@ header {
 }
 
 .key.special {
-  grid-column: span 2; /* Make Reset and Enter buttons wider */
+  grid-column: span 2; /* Make Reset, Backspace, and Enter buttons wider */
 }
 
 @media (max-width: 600px) {
@@ -96,5 +97,9 @@ header {
   .key {
     padding: 10px;
     font-size: 1rem;
+  }
+
+  #keyboard {
+    padding: 0 15px; /* Increased padding for smaller screens */
   }
 }
