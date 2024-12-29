@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #345678;
+  color: white;
+  padding: 15px 0;
+}
+
+#clue-box {
+  background-color: #56789a;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
+
+#answer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.letter-row {
+  display: flex;
+  gap: 5px;
+}
+
+.letter-input {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #345678;
+  margin: 0 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #345678;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
