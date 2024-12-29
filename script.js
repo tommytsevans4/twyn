@@ -25,7 +25,7 @@ document.getElementById('submit-btn').addEventListener('click', () => {
 });
 
 // Fetch the clue from the back-end server
-fetch('https://your-backend-url.onrender.com/clue') // Replace with your Render URL
+fetch('https://twyn.onrender.com/clue') // Replace with your Render URL
   .then(response => response.json())
   .then(data => {
     // Update the clue in the game
