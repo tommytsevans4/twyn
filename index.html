@@ -11,18 +11,23 @@
   <!-- Start Screen -->
   <div id="start-screen" class="screen">
     <header class="start-header">
-      <h1><span class="twyn-logo"></span> Twyn</h1>
+      <h1>
+        <span class="logo">
+          <img src="twyn-logo.svg" alt="Twyn Logo" />
+        </span>
+        Twyn
+      </h1>
     </header>
-    <p class="description">A Twyn is a pair of words that sound the same but have different meanings. Guess the Twyn correctly and you win!</p>
+    <p class="description">
+      A Twyn is a pair of words that sound the same but have different meanings.
+      Guess the Twyn correctly and you win!
+    </p>
     <div class="level-selector">
-      <label for="level">Choose Difficulty:</label>
-      <select id="level" name="level">
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
-      </select>
+      <button class="level-btn" data-level="Easy">Easy</button>
+      <button class="level-btn" data-level="Medium">Medium</button>
+      <button class="level-btn" data-level="Hard">Hard</button>
     </div>
-    <button id="play-btn">Play</button>
+    <button id="play-btn" disabled>Play</button>
   </div>
 
   <!-- Game Screen -->
