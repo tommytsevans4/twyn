@@ -1,27 +1,79 @@
+/* General Styles */
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #f4f4f9;
   text-align: center;
   margin: 0;
   padding: 0;
-  touch-action: manipulation; /* Prevents double-tap zoom */
+  touch-action: manipulation; /* Prevent double-tap zoom */
 }
 
-header {
-  background-color: #2F667F;
-  color: white;
-  padding: 10px 20px; /* Reduced padding for smaller header */
-  text-align: left;
+.screen {
   display: flex;
-  align-items: center; /* Vertically center content */
-  height: 50px; /* Reduced height */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
+.hidden {
+  display: none; /* Hide screens */
 }
 
+/* Start Screen */
+.start-header img.logo {
+  width: 200px; /* Adjust size */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #323232;
+  margin: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.level-selector {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.level-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  background-color: #D5B5B4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.level-btn.active {
+  background-color: #2F667F;
+}
+
+#play-btn {
+  background-color: #D5B5B4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: not-allowed;
+  transition: background-color 0.3s;
+}
+
+#play-btn:enabled {
+  background-color: #2F667F;
+  cursor: pointer;
+}
+
+/* Game Screen */
 #game-container {
   max-width: 500px;
   margin: 0 auto;
@@ -44,201 +96,11 @@ header h1 {
   margin: 20px 0;
 }
 
-.letter-box,
-.fixed-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 40px;
-  height: 60px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #2F667F;
-  border: none;
-}
-
-.letter-box::after {
-  content: "_";
-  font-size: 1.5rem;
-  color: #2F667F;
-  margin-top: 5px;
-}
-
-.fixed-box {
-  justify-content: center;
-  color: #2F667F;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
 #keyboard {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 5px;
   justify-content: center;
   margin: 20px 0;
-  padding: 0 10px; /* Add padding to the keyboard to prevent it from touching screen edges */
-}
-
-.key {
-  padding: 15px;
-  background-color: #ddd;
-  font-size: 1.2rem;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.key.special {
-  grid-column: span 2; /* Make Reset, Del, and Enter buttons wider */
-}
-
-#start-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-#start-screen .description {
-  font-size: 1rem;
-  margin: 20px;
-}
-
-#start-screen .level-selector {
-  margin: 20px 0;
-}
-
-#start-screen select {
-  font-size: 1rem;
-  padding: 5px;
-}
-
-#play-btn {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #2F667F;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .letter-box,
-  .fixed-box {
-    width: 30px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-
-  .key {
-    padding: 10px;
-    font-size: 1rem;
-  }
-
-  #keyboard {
-    padding: 0 15px; /* Increased padding for smaller screens */
-  }
-
-  header {
-    padding: 8px 15px;
-    height: 40px; /* Reduced height for mobile screens */
-  }
-}
-
-.results-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #2F667F;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 1000;
-}
-
-.results-banner h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.answer-display {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px;
-  background-color: #467d92;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.definitions h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.definitions p {
-  font-size: 1rem;
-  margin: 5px 0;
-}
-
-#play-again-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: white;
-  color: #2F667F;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.level-btn {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 1rem;
-  background-color: #C4A2A2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.level-btn.active {
-  background-color: #2F667F;
-}
-
-#play-btn {
-  background-color: #C4A2A2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: not-allowed;
-}
-
-#play-btn:enabled {
-  background-color: #2F667F;
-  cursor: pointer;
-}
-
-.logo {
-  width: 200px; /* Adjust size as needed */
-  height: auto;
-  display: block;
-  margin: 0 auto; /* Center the logo */
+  padding: 0 10px;
 }
