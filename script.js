@@ -92,3 +92,54 @@ function submitAnswer() {
     alert("Incorrect. Try again!");
   }
 }
+
+const letterBoxes = document.querySelectorAll('.letter-box');
+let currentIndex = 0;
+
+// Function to handle keyboard input
+function handleKeyboardInput(key) {
+  if (currentIndex < letterBoxes.length) {
+    letterBoxes[currentIndex].textContent = key.toUpperCase();
+    currentIndex++;
+  }
+}
+
+// Add Reset functionality
+function resetGame() {
+  letterBoxes.forEach(box => (box.textContent = ""));
+  currentIndex = 0;
+}
+
+// Add Submit functionality
+function submitAnswer() {
+  const userAnswer = Array.from(letterBoxes)
+    .map(box => box.textContent)
+    .join("");
+  console.log("Your answer:", userAnswer);
+  // Compare userAnswer to the correct answer here
+}
+
+// Create an on-screen keyboard
+const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
+const keyboard = document.getElementById('keyboard');
+
+keys.forEach(key => {
+  const button = document.createElement('button');
+  button.textContent = key;
+  button.classList.add('key');
+  button.addEventListener('click', () => handleKeyboardInput(key));
+  keyboard.appendChild(button);
+});
+
+// Add Reset and Enter buttons to the keyboard
+const resetButton = document.createElement('button');
+resetButton.textContent = "Reset";
+resetButton.classList.add('key', 'special');
+resetButton.addEventListener('click', resetGame);
+keyboard.appendChild(resetButton);
+
+const enterButton = document.createElement('button');
+enterButton.textContent = "Enter";
+enterButton.classList.add('key', 'special');
+enterButton.addEventListener('click', submitAnswer);
+keyboard.appendChild(enterButton);
