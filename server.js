@@ -3,7 +3,9 @@ const cors = require('cors');
 const axios = require('axios');
 const app = express();
 
-app.use(cors());
+// Allow requests from your front-end origin
+app.use(cors({ origin: 'https://playtwyn.com' })); // Replace with your front-end URL
+
 app.use(express.json());
 
 // Hardcoded clues for fallback or testing
@@ -25,7 +27,7 @@ app.get('/clue', async (req, res) => {
     const rows = response.data.split('\n').slice(1); // Skip the header row
     const clues = rows.map(row => {
       const [clue, answer] = row.split(',');
-      return { clue, answer };
+      return { clue: clue.trim(), answer: answer.trim() }; // Trim whitespace
     });
 
     // Select a random clue
@@ -39,6 +41,11 @@ app.get('/clue', async (req, res) => {
     const fallbackClue = hardcodedClues[Math.floor(Math.random() * hardcodedClues.length)];
     res.json(fallbackClue);
   }
+});
+
+// Catch-all route to test server health
+app.get('/', (req, res) => {
+  res.send('Twyn backend is running.');
 });
 
 // Start the server
