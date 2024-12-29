@@ -1,11 +1,14 @@
 const answerBox = document.getElementById('answer-box');
 const keyboard = document.getElementById('keyboard');
+const startScreen = document.getElementById('start-screen');
+const gameContainer = document.getElementById('game-container');
+const playBtn = document.getElementById('play-btn');
 let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
 
-// Fetch the clue from the backend server
-function fetchClue() {
-  fetch('https://twyn.onrender.com/clue')
+// Fetch the clue from the backend server based on difficulty level
+function fetchClue(level) {
+  fetch(`https://twyn.onrender.com/clue?difficulty=${level}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -52,8 +55,8 @@ function handleKeyboardInput(key) {
   }
 }
 
-// Handle backspace key input
-function handleBackspace() {
+// Handle delete key input
+function handleDelete() {
   const letterBoxes = document.querySelectorAll('.letter-box');
   if (currentIndex > 0) {
     currentIndex--;
@@ -93,12 +96,12 @@ function createKeyboard() {
     keyboard.appendChild(button);
   });
 
-  // Add Backspace button
-  const backspaceButton = document.createElement('button');
-  backspaceButton.textContent = "Backspace";
-  backspaceButton.classList.add('key', 'special');
-  backspaceButton.addEventListener('click', handleBackspace);
-  keyboard.appendChild(backspaceButton);
+  // Add Delete button
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = "Del";
+  deleteButton.classList.add('key', 'special');
+  deleteButton.addEventListener('click', handleDelete);
+  keyboard.appendChild(deleteButton);
 
   // Add Reset button
   const resetButton = document.createElement('button');
@@ -115,10 +118,19 @@ function createKeyboard() {
   keyboard.appendChild(enterButton);
 }
 
-// Initialize the game
+// Initialize the game after selecting difficulty level
+playBtn.addEventListener("click", () => {
+  const selectedLevel = document.getElementById("level").value;
+  startScreen.classList.add("hidden");
+  gameContainer.classList.remove("hidden");
+  fetchClue(selectedLevel); // Fetch clue based on the selected difficulty
+  createKeyboard();
+});
+
+// Initialize the start screen
 function initGame() {
-  fetchClue(); // Fetch the clue only once
-  createKeyboard(); // Create the on-screen keyboard
+  startScreen.classList.remove("hidden");
+  gameContainer.classList.add("hidden");
 }
 
 // Start the game
