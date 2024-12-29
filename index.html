@@ -2,22 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Twyn</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="game-container">
-    <header>
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen">
+    <header class="start-header">
+      <h1><span class="twyn-logo"></span> Twyn</h1>
+    </header>
+    <p class="description">A Twyn is a pair of words that sound the same but have different meanings. Guess the Twyn correctly and you win!</p>
+    <div class="level-selector">
+      <label for="level">Choose Difficulty:</label>
+      <select id="level" name="level">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+    </div>
+    <button id="play-btn">Play</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-container" class="screen hidden">
+    <header class="game-header">
       <h1>Twyn</h1>
     </header>
     <div id="clue-box">
       <p>Loading clue...</p>
     </div>
-    <div id="answer-box"></div> <!-- Dynamically populated -->
-    <div id="keyboard"></div> <!-- Dynamically populated -->
+    <div id="answer-box"></div>
+    <div id="keyboard"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
