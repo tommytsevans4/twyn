@@ -23,3 +23,17 @@ document.getElementById('submit-btn').addEventListener('click', () => {
     .join('');
   console.log("Your answer:", answer); // Replace this with actual game logic
 });
+
+// Fetch the clue from the back-end server
+fetch('https://your-backend-url.onrender.com/clue') // Replace with your Render URL
+  .then(response => response.json())
+  .then(data => {
+    // Update the clue in the game
+    document.querySelector('#clue-box p').textContent = data.clue;
+
+    // Log the answer (or use it for validation)
+    console.log("Correct Answer:", data.answer); 
+  })
+  .catch(error => {
+    console.error("Error fetching clue:", error);
+  });
