@@ -172,11 +172,11 @@ function createKeyboard() {
   keyboard.appendChild(resetButton);
 
   // Add Enter button
-  const enterButton = document.createElement("button");
-  enterButton.textContent = "Enter";
-  enterButton.classList.add("key", "special");
-  enterButton.addEventListener("click", submitAnswer);
-  keyboard.appendChild(enterButton);
+const enterButton = document.createElement("button");
+enterButton.textContent = "Enter";
+enterButton.classList.add("key", "special");
+enterButton.addEventListener("click", submitAnswer); // Attach the submitAnswer function
+keyboard.appendChild(enterButton);
 }
 
 // Handle Play button click
