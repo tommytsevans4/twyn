@@ -124,8 +124,9 @@ body {
   margin: 5px;
 }
 
+/* Play Again Button */
 #play-again-btn {
-  background-color: #D5B5B4; /* Default disabled state */
+  background-color: #D5B5B4; /* Default state */
   color: white;
   border: none;
   border-radius: 5px;
@@ -137,4 +138,59 @@ body {
 
 #play-again-btn:hover {
   background-color: #A2BAC4; /* Hover state */
+}
+
+/* Results Screen */
+#results-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  padding: 20px;
+  text-align: center;
+}
+
+.result-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #2F667F;
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.answer-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f4f4f9;
+  background-color: #5E8690;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.definitions {
+  background-color: #2F667F;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 500px;
+}
+
+.definitions h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.definitions p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 10px 0;
 }
