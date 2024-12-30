@@ -237,7 +237,7 @@ body {
 /* App Header */
 .app-header {
   display: flex;
-  justify-content: space-between; /* Space between logo and text */
+  justify-content: flex-start; /* Align items to the left */
   align-items: center;
   position: fixed; /* Fixed position to make it stay at the top */
   top: 0; /* Align to the very top */
@@ -252,10 +252,11 @@ body {
 .header-logo {
   width: 30px; /* Adjust size as needed */
   height: auto;
+  margin-right: 10px; /* Add space between the logo and title */
 }
 
 .header-title {
   font-weight: bold;
   font-size: 1.5rem;
-  margin-left: auto; /* Push the title to the right */
+  margin-left: 0; /* Ensure no extra spacing on the left */
 }
