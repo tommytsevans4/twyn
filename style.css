@@ -170,19 +170,23 @@ body {
 }
 
 .key {
-  background-color: #d3d3d3;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.5rem;
-  padding: 15px;
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  background-color: #D4D7DB; /* Updated background color */
+  color: #000000; /* Updated font color */
+  font-family: 'Source Sans Pro', sans-serif; /* Updated font family */
+  font-size: 1.2rem; /* Updated font size */
+  width: 96px; /* Set width */
+  height: 174px; /* Set height */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Pointer cursor on hover */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  font-weight: bold; /* Keep font bold */
+  transition: background-color 0.3s; /* Optional: Add transition for hover effect */
 }
-
+    
 .key.special {
   grid-column: span 2; /* Special keys like "Enter" and "Del" take 2 spaces */
   text-transform: uppercase;
