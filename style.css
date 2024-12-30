@@ -98,12 +98,13 @@ body {
 
 #answer-box {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping to the next line */
-  gap: 10px; /* Add spacing between answer boxes */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically if necessary */
-  margin: 20px auto; /* Center the entire answer box container */
-  max-width: 100%; /* Ensure it doesn't overflow */
+  flex-wrap: wrap; /* Allows wrapping to the next line */
+  gap: 5px; /* Adjusted for smaller gaps */
+  justify-content: center;
+  align-items: flex-start; /* Align letters to the top of the container */
+  margin: 20px auto; /* Centers horizontally */
+  max-width: 90%; /* Prevents overflow */
+  overflow: visible; /* Ensures visibility of child elements */
 }
 
 .word-container {
@@ -139,7 +140,7 @@ body {
 }
 
 .letter-box {
-  display: flex;
+  display: inline-flex; /* Inline to flow properly in parent container */
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -150,9 +151,10 @@ body {
   border-bottom: 4px solid #2F667F; /* Thick underline */
   margin: 5px;
   color: #2F667F;
-  outline: none; /* Removes default outline */
+  background-color: #fff; /* Optional: Add background for better visibility */
+  outline: none; /* Removes default focus styles */
 }
-
+    
 .spacer {
   width: 20px; /* Space between words */
   height: 60px; /* Match letter box height */
