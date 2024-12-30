@@ -126,7 +126,7 @@ function showResultScreen(isCorrect) {
         <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
         <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
       </div>
-      <button id="play-again-btn">Play Again</button>
+      <button id="play-again-btn" class="play-btn-style">Play Again</button>
     </div>
   `;
 
@@ -182,11 +182,11 @@ function createKeyboard() {
   keyboard.appendChild(resetButton);
 
   // Add Enter button
-const enterButton = document.createElement("button");
-enterButton.textContent = "Enter";
-enterButton.classList.add("key", "special");
-enterButton.addEventListener("click", submitAnswer); // Attach the submitAnswer function
-keyboard.appendChild(enterButton);
+  const enterButton = document.createElement("button");
+  enterButton.textContent = "Enter";
+  enterButton.classList.add("key", "special");
+  enterButton.addEventListener("click", submitAnswer); // Attach the submitAnswer function
+  keyboard.appendChild(enterButton);
 }
 
 // Handle Play button click
