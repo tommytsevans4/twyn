@@ -158,10 +158,8 @@ body {
 }
     
 .key {
-  width: 96px; /* Maintain the width */
-  height: 174px; /* Maintain the height */
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #000000; /* Black text */
   background-color: #D4D7DB; /* Light gray background */
   border: none;
