@@ -294,4 +294,5 @@ body {
   font-weight: bold;
   font-size: 1.5rem;
   margin-left: 10px; /* Add spacing between logo and title */
+  white-space: nowrap; /* Prevent wrapping */
 }
