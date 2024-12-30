@@ -108,6 +108,14 @@ body {
   display: flex; /* Ensure letters in the same word stay together */
 }
 
+#start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0; /* Default for mobile */
+}
+
 /* Desktop-Specific Adjustments */
 @media (min-width: 1024px) {
   #game-container {
