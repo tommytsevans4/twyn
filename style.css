@@ -160,13 +160,11 @@ body {
 }
 
 #keyboard {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr); /* Default layout for the top row */
-  gap: 10px;
-  justify-content: center;
-  margin: 20px auto;
-  padding: 0 10px;
-  max-width: 90%; /* Adjust width for mobile */
+  display: grid; /* Use grid for layout */
+  grid-template-columns: repeat(10, 96px); /* Adjust to fit keys in rows */
+  gap: 10px; /* Space between keys */
+  justify-content: center; /* Center the keyboard */
+  margin: 20px auto; /* Add vertical space */
 }
 
 .key {
@@ -177,7 +175,7 @@ body {
   width: 96px; /* Set width */
   height: 174px; /* Set height */
   border: none; /* No border */
-  border-radius: 2px; /* Rounded corners */
+  border-radius: 10px; /* Rounded corners */
   text-align: center; /* Center text */
   cursor: pointer; /* Pointer cursor on hover */
   display: flex; /* Use flexbox for alignment */
