@@ -273,7 +273,7 @@ body {
 }
     
 .header-logo {
-  width: 30px; /* Adjust size as needed */
+  width: 100px; /* Adjust size as needed */
   height: auto;
   margin-right: 10px; /* Add space between the logo and title */
 }
