@@ -115,7 +115,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 400px; /* Add padding for desktop */
   position: absolute; /* Ensure it's placed properly */
   width: 100%; /* Full width of the viewport */
   height: 100%; /* Full height of the viewport */
