@@ -160,29 +160,29 @@ body {
 }
 
 #keyboard {
-  display: grid; /* Use grid for layout */
-  grid-template-columns: repeat(10, 96px); /* Adjust to fit keys in rows */
-  gap: 10px; /* Space between keys */
-  justify-content: center; /* Center the keyboard */
-  margin: 20px auto; /* Add vertical space */
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Adjust for the top row */
+  gap: 24px 18px; /* 24px vertical gap, 18px horizontal gap */
+  justify-content: center;
+  margin: 20px auto;
+  padding: 0 10px;
+  max-width: 90%;
 }
-
+    
 .key {
-  background-color: #D4D7DB; /* Updated background color */
-  color: #000000; /* Updated font color */
-  font-family: 'Source Sans Pro', sans-serif; /* Updated font family */
-  font-size: 1.2rem; /* Updated font size */
-  width: 96px; /* Set width */
-  height: 174px; /* Set height */
-  border: none; /* No border */
-  border-radius: 10px; /* Rounded corners */
-  text-align: center; /* Center text */
-  cursor: pointer; /* Pointer cursor on hover */
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-  font-weight: bold; /* Keep font bold */
-  transition: background-color 0.3s; /* Optional: Add transition for hover effect */
+  width: 96px; /* Maintain the width */
+  height: 174px; /* Maintain the height */
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  color: #000000; /* Black text */
+  background-color: #D4D7DB; /* Light gray background */
+  border: none;
+  border-radius: 10px; /* Slightly rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
 }
     
 .key.special {
