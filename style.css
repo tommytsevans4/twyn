@@ -175,13 +175,16 @@ body {
   justify-content: center;
   cursor: pointer;
   font-weight: bold;
-  width: 50px; /* Key width */
-  height: 60px; /* Key height */
+  width: 30px; /* Key width */
+  height: 40px; /* Key height */
 }
 
-.key.special {
-  width: calc(96px * 2 + 18px); /* Width for special keys spans two keys */
-  text-transform: uppercase;
+.enter-key {
+  width: 40px; /* Define the width for the Enter key */
+}
+
+.delete-key {
+  width: 40px; /* Define a width for the delete/backspace key */
 }
 
 /* Play Again Button */
@@ -268,12 +271,12 @@ body {
   color: white;
   font-size: 1.2rem;
   z-index: 1000; /* Ensure it's above all other elements */
-  height: 60px; /* Adjust to a consistent size */
+  height: 40px; /* Adjust to a consistent size */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
 }
     
 .header-logo {
-  width: 100px; /* Adjust size as needed */
+  width: 90px; /* Adjust size as needed */
   height: auto;
   margin-right: 10px; /* Add space between the logo and title */
 }
