@@ -180,10 +180,15 @@ body {
 
 .enter-key {
   width: 40px; /* Define the width for the Enter key */
+  font-size: 0.8rem; /* Set font size for the Enter key */
+  text-transform: uppercase; /* Ensure text is uppercase (optional) */
+  font-weight: bold; /* Ensure consistent font weight */
 }
 
 .delete-key {
   width: 40px; /* Define a width for the delete/backspace key */
+  font-size: 1.5rem; /* Set font size for the Delete key */
+  font-weight: bold; /* Ensure consistent font weight */
 }
 
 /* Play Again Button */
