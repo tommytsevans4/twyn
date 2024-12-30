@@ -79,7 +79,6 @@ body {
 
 /* Game Screen */
 #game-container {
-    background-color: rgba(0, 255, 0, 0.5); /* Green for game container */
   max-width: 500px;
   margin: 0 auto;
   padding-top: 200px; /* Ensure space from the app header */
@@ -112,7 +111,6 @@ body {
 }
 
 #start-screen {
-    background-color: rgba(255, 0, 0, 0.5); /* Red for start screen */
   display: flex;
   flex-direction: column;
   justify-content: center;
