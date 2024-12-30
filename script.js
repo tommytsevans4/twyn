@@ -37,16 +37,19 @@ levelButtons.forEach((button) => {
 
 // Fetch the clue from the backend server based on difficulty level
 function fetchClue() {
-  console.log("Fetching clue...");
+  console.log("Fetching clue..."); // Log start of fetch
   fetch(`https://twyn.onrender.com/clue?difficulty=${selectedLevel}`)
     .then((response) => {
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      console.log("Clue fetched successfully"); // Log successful fetch
       return response.json();
     })
     .then((data) => {
+      console.log("Clue data:", data); // Log fetched data
       document.querySelector("#clue-box p").textContent = data.clue;
       correctAnswer = data.answer.toUpperCase();
-      currentClueData = data;
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
