@@ -97,10 +97,9 @@ function enableSystemKeyboardInput() {
     });
   });
 
-  // Handle "Enter" key submission
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      submitAnswer();
+      submitAnswer(); // Submit answer when Enter is pressed
     }
   });
 
@@ -138,36 +137,34 @@ function createKeyboard() {
     return;
   }
   keyboard.classList.remove("hidden");
+  const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
   keyboard.innerHTML = "";
 
-  const rows = [
-    "QWERTYUIOP",
-    "ASDFGHJKL",
-    "ENTERZXCVBNMDEL",
-  ];
-
-  rows.forEach((row, rowIndex) => {
-    const rowContainer = document.createElement("div");
-    rowContainer.className = "keyboard-row";
-
-    row.split("").forEach((key) => {
-      const button = document.createElement("button");
-      button.textContent = key === "DEL" ? "←" : key;
-      button.classList.add("key");
-      if (key === "ENTER") {
-        button.classList.add("special");
-        button.addEventListener("click", submitAnswer);
-      } else if (key === "DEL") {
-        button.classList.add("special");
-        button.addEventListener("click", handleDelete);
-      } else {
-        button.addEventListener("click", () => handleKeyboardInput(key));
-      }
-      rowContainer.appendChild(button);
-    });
-
-    keyboard.appendChild(rowContainer);
+  keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    button.addEventListener("click", () => handleKeyboardInput(key));
+    keyboard.appendChild(button);
   });
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Del";
+  deleteButton.classList.add("key", "special");
+  deleteButton.addEventListener("click", handleDelete);
+  keyboard.appendChild(deleteButton);
+
+  const resetButton = document.createElement("button");
+  resetButton.textContent = "Reset";
+  resetButton.classList.add("key", "special");
+  resetButton.addEventListener("click", resetGame);
+  keyboard.appendChild(resetButton);
+
+  const enterButton = document.createElement("button");
+  enterButton.textContent = "Enter";
+  enterButton.classList.add("key", "special");
+  enterButton.addEventListener("click", submitAnswer);
+  keyboard.appendChild(enterButton);
 }
 
 // Display result screen
@@ -178,7 +175,7 @@ function showResultScreen(isCorrect) {
   resultScreen.className = "screen";
 
   resultScreen.innerHTML = `
-    <header class="app-header right-align">
+    <header class="app-header">
       <img src="twyn-logo.png" alt="Twyn Logo" class="header-logo" />
       <span class="header-title">Twyn</span>
     </header>
