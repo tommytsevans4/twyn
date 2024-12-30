@@ -64,16 +64,27 @@ function fetchClue() {
 // Generate answer boxes based on the given answer
 function generateAnswerBoxes(answer) {
   answerBox.innerHTML = ""; // Clear previous boxes
-  answer.split("").forEach((char) => {
-    if (char === " ") {
-      const spacer = document.createElement("div");
-      spacer.style.width = "20px"; // Add spacing for spaces in the answer
-      answerBox.appendChild(spacer);
-    } else {
+
+  const words = answer.split(" "); // Split the answer into words
+  words.forEach((word, wordIndex) => {
+    const wordContainer = document.createElement("div"); // Create a container for each word
+    wordContainer.className = "word-container";
+
+    word.split("").forEach((char) => {
       const box = document.createElement("span");
       box.className = "letter-box";
       box.textContent = ""; // Empty placeholder
-      answerBox.appendChild(box);
+      wordContainer.appendChild(box);
+    });
+
+    answerBox.appendChild(wordContainer);
+
+    // Add a spacer between words, except after the last word
+    if (wordIndex < words.length - 1) {
+      const spacer = document.createElement("div");
+      spacer.className = "spacer";
+      spacer.style.width = "20px"; // Add spacing for spaces in the answer
+      answerBox.appendChild(spacer);
     }
   });
 }
