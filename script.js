@@ -174,6 +174,14 @@ function submitAnswer() {
     .trim();
   const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
   console.log("Submitted Answer:", userAnswer, "Is Correct:", isCorrect);
+
+  if (isCorrect) {
+    alert("Correct Answer!");
+    // Add any additional logic for a correct answer
+  } else {
+    alert("Incorrect Answer. Try Again.");
+    // Add any additional logic for an incorrect answer
+  }
 }
 
 // Handle Play button click
