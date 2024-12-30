@@ -6,10 +6,6 @@ const app = express();
 // Allow requests from your front-end origin
 app.use(cors({ origin: 'https://playtwyn.com' })); // Replace with your front-end URL
 
-app.get('/clue', (req, res) => {
-  res.json({ clue: 'Example Clue', answer: 'Example Answer' });
-});
-
 app.listen(3000, () => console.log('Server is running on port 3000'));
 
 app.use(express.json());
