@@ -114,9 +114,11 @@ function enableSystemKeyboardInput() {
 
 function createKeyboard() {
   if (!isMobile) {
+    console.log("Hiding keyboard on desktop");
     keyboard.classList.add("hidden"); // Hide keyboard on desktop
     return;
   }
+  console.log("Creating keyboard for mobile");
   keyboard.classList.remove("hidden");
   keyboard.innerHTML = ""; // Clear the keyboard
 
@@ -124,7 +126,6 @@ function createKeyboard() {
   const row2Keys = "ASDFGHJKL".split("");
   const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Del"];
 
-  // Create the rows
   const row1 = document.createElement("div");
   row1.classList.add("row-1");
   row1Keys.forEach((key) => {
@@ -169,6 +170,8 @@ function createKeyboard() {
   keyboard.appendChild(row1);
   keyboard.appendChild(row2);
   keyboard.appendChild(row3);
+
+  console.log("Keyboard HTML:", keyboard.innerHTML); // Log keyboard HTML
 }
 
 // Handle Play button click
