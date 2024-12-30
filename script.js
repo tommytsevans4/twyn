@@ -137,34 +137,57 @@ function createKeyboard() {
     return;
   }
   keyboard.classList.remove("hidden");
-  const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
-  keyboard.innerHTML = "";
+  keyboard.innerHTML = ""; // Clear the keyboard
 
-  keys.forEach((key) => {
+  const row1Keys = "QWERTYUIOP".split("");
+  const row2Keys = "ASDFGHJKL".split("");
+  const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Del"];
+
+  // Create the rows
+  const row1 = document.createElement("div");
+  row1.classList.add("row-1");
+  row1Keys.forEach((key) => {
     const button = document.createElement("button");
     button.textContent = key;
     button.classList.add("key");
     button.addEventListener("click", () => handleKeyboardInput(key));
-    keyboard.appendChild(button);
+    row1.appendChild(button);
   });
 
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Del";
-  deleteButton.classList.add("key", "special");
-  deleteButton.addEventListener("click", handleDelete);
-  keyboard.appendChild(deleteButton);
+  const row2 = document.createElement("div");
+  row2.classList.add("row-2");
+  row2Keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    button.addEventListener("click", () => handleKeyboardInput(key));
+    row2.appendChild(button);
+  });
 
-  const resetButton = document.createElement("button");
-  resetButton.textContent = "Reset";
-  resetButton.classList.add("key", "special");
-  resetButton.addEventListener("click", resetGame);
-  keyboard.appendChild(resetButton);
+  const row3 = document.createElement("div");
+  row3.classList.add("row-3");
+  row3Keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    if (key === "Enter" || key === "Del") {
+      button.classList.add("special");
+    }
+    button.addEventListener("click", () => {
+      if (key === "Enter") {
+        submitAnswer();
+      } else if (key === "Del") {
+        handleDelete();
+      } else {
+        handleKeyboardInput(key);
+      }
+    });
+    row3.appendChild(button);
+  });
 
-  const enterButton = document.createElement("button");
-  enterButton.textContent = "Enter";
-  enterButton.classList.add("key", "special");
-  enterButton.addEventListener("click", submitAnswer);
-  keyboard.appendChild(enterButton);
+  keyboard.appendChild(row1);
+  keyboard.appendChild(row2);
+  keyboard.appendChild(row3);
 }
 
 // Display result screen
