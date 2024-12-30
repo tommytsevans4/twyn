@@ -95,9 +95,11 @@ body {
 #answer-box {
   display: flex;
   flex-wrap: wrap; /* Allow wrapping to the next line */
-  gap: 10px;
-  justify-content: center;
-  margin: 20px 0;
+  gap: 10px; /* Add spacing between answer boxes */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if necessary */
+  margin: 20px auto; /* Center the entire answer box container */
+  max-width: 100%; /* Ensure it doesn't overflow */
 }
 
 .word-container {
@@ -108,6 +110,9 @@ body {
 @media (min-width: 1024px) {
   #game-container {
     padding-top: 200px; /* Ensure 200px spacing specifically for desktop */
+  .letter-box:focus {
+    outline: none; /* Removes the blue outline on desktop */
+    box-shadow: none; /* Ensures no additional focus styling */
   }
 }
 
@@ -123,6 +128,7 @@ body {
   border-bottom: 4px solid #2F667F; /* Thick underline */
   margin: 5px;
   color: #2F667F;
+  outline: none; /* Removes default outline */
 }
 
 .spacer {
