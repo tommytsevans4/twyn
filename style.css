@@ -77,7 +77,9 @@ body {
 #game-container {
   max-width: 500px;
   margin: 0 auto;
-  padding-top: 200px; /* Add padding to position clue and answer sections */
+  padding-top: 200px; /* Ensure space from the app header */
+  padding-bottom: 20px; /* Optional: Add some spacing at the bottom */
+  position: relative; /* Ensure proper positioning */
 }
 
 #clue-box {
