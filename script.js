@@ -130,34 +130,45 @@ function createKeyboard() {
     return;
   }
   keyboard.classList.remove("hidden");
-  const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
   keyboard.innerHTML = "";
 
-  keys.forEach((key) => {
-    const button = document.createElement("button");
-    button.textContent = key;
-    button.classList.add("key");
-    button.addEventListener("click", () => handleKeyboardInput(key));
-    keyboard.appendChild(button);
+  const rows = [
+    "QWERTYUIOP",
+    "ASDFGHJKL",
+    "ZXCVBNM",
+  ];
+
+  rows.forEach((row) => {
+    const rowContainer = document.createElement("div");
+    rowContainer.className = "keyboard-row";
+
+    row.split("").forEach((key) => {
+      const button = document.createElement("button");
+      button.textContent = key;
+      button.classList.add("key");
+      button.addEventListener("click", () => handleKeyboardInput(key));
+      rowContainer.appendChild(button);
+    });
+
+    keyboard.appendChild(rowContainer);
   });
 
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Del";
-  deleteButton.classList.add("key", "special");
-  deleteButton.addEventListener("click", handleDelete);
-  keyboard.appendChild(deleteButton);
-
-  const resetButton = document.createElement("button");
-  resetButton.textContent = "Reset";
-  resetButton.classList.add("key", "special");
-  resetButton.addEventListener("click", resetGame);
-  keyboard.appendChild(resetButton);
+  const actionRow = document.createElement("div");
+  actionRow.className = "keyboard-row";
 
   const enterButton = document.createElement("button");
   enterButton.textContent = "Enter";
   enterButton.classList.add("key", "special");
   enterButton.addEventListener("click", submitAnswer);
-  keyboard.appendChild(enterButton);
+  actionRow.appendChild(enterButton);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Del";
+  deleteButton.classList.add("key", "special");
+  deleteButton.addEventListener("click", handleDelete);
+  actionRow.appendChild(deleteButton);
+
+  keyboard.appendChild(actionRow);
 }
 
 // Display result screen
