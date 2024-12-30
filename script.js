@@ -235,6 +235,7 @@ function submitAnswer() {
 
 // Handle Play button click
 playBtn.addEventListener("click", () => {
+  console.log("Play button clicked");
   if (!selectedLevel) return; // Ensure a level is selected before proceeding
   startScreen.classList.add("hidden"); // Hide the start screen
   gameContainer.classList.remove("hidden"); // Show the game screen
