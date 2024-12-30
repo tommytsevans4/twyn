@@ -157,6 +157,14 @@ body {
   padding: 0 10px;
   max-width: 90%;
 }
+
+.keyboard-row {
+  display: flex;
+  justify-content: center; /* Center align the keys horizontally */
+  gap: 18px; /* Horizontal gap between keys */
+  margin-bottom: 24px; /* Vertical gap between rows */
+  width: 100%; /* Ensure rows take up the full width */
+}
     
 .key {
   font-family: 'Source Sans Pro', sans-serif;
@@ -175,14 +183,6 @@ body {
 .key.special {
   grid-column: span 2; /* Special keys like "Enter" and "Del" take 2 spaces */
   text-transform: uppercase;
-}
-
-.row-1,
-.row-2,
-.row-3 {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
 }
     
 /* Play Again Button */
