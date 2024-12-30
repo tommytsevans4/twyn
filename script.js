@@ -9,9 +9,6 @@ let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
 let currentClueData = {}; // Store the current clue data with definitions
 
-// Detect if the user is on a mobile device
-const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
 // Enable or disable the Play button based on level selection
 function updatePlayButtonState() {
   if (selectedLevel) {
@@ -68,7 +65,7 @@ function generateAnswerBoxes(answer) {
     const wordContainer = document.createElement("div");
     wordContainer.className = "word-container";
 
-    word.split("").forEach((char) => {
+    word.split("").forEach(() => {
       const box = document.createElement("span");
       box.className = "letter-box"; // Add the class
       box.textContent = ""; // Empty placeholder
@@ -85,41 +82,12 @@ function generateAnswerBoxes(answer) {
     }
   });
 
-  if (!isMobile) {
-    enableSystemKeyboardInput();
-  }
+  console.log("Final content of #answer-box:", answerBox.innerHTML);
 }
 
-// Enable system keyboard input for desktop
-function enableSystemKeyboardInput() {
-  const letterBoxes = document.querySelectorAll(".letter-box");
-  letterBoxes.forEach((box, index) => {
-    box.contentEditable = true;
-    box.addEventListener("input", (e) => {
-      box.textContent = e.target.textContent.toUpperCase().slice(0, 1);
-      if (box.textContent && index < letterBoxes.length - 1) {
-        letterBoxes[index + 1].focus();
-      }
-    });
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      submitAnswer();
-    }
-  });
-
-  keyboard.classList.add("hidden");
-}
-
+// Handle keyboard input
 function createKeyboard() {
-  if (!isMobile) {
-    console.log("Hiding keyboard on desktop");
-    keyboard.classList.add("hidden"); // Hide keyboard on desktop
-    return;
-  }
-  console.log("Creating keyboard for mobile");
-  keyboard.classList.remove("hidden");
+  console.log("Creating keyboard...");
   keyboard.innerHTML = ""; // Clear the keyboard
 
   const row1Keys = "QWERTYUIOP".split("");
@@ -152,13 +120,13 @@ function createKeyboard() {
     const button = document.createElement("button");
     button.textContent = key;
     button.classList.add("key");
-    if (key === "Enter" || key === "Del") {
+    if (key === "Enter" || key === "⌫") {
       button.classList.add("special");
     }
     button.addEventListener("click", () => {
       if (key === "Enter") {
         submitAnswer();
-      } else if (key === "Del") {
+      } else if (key === "⌫") {
         handleDelete();
       } else {
         handleKeyboardInput(key);
@@ -171,21 +139,49 @@ function createKeyboard() {
   keyboard.appendChild(row2);
   keyboard.appendChild(row3);
 
-  console.log("Keyboard HTML:", keyboard.innerHTML); // Log keyboard HTML
+  console.log("Keyboard HTML:", keyboard.innerHTML);
+}
+
+// Handle keyboard input
+function handleKeyboardInput(key) {
+  const letterBoxes = document.querySelectorAll(".letter-box");
+  if (currentIndex < letterBoxes.length) {
+    letterBoxes[currentIndex].textContent = key.toUpperCase();
+    currentIndex++;
+  }
+}
+
+// Handle delete key input
+function handleDelete() {
+  const letterBoxes = document.querySelectorAll(".letter-box");
+  if (currentIndex > 0) {
+    currentIndex--;
+    letterBoxes[currentIndex].textContent = "";
+  }
+}
+
+// Submit answer
+function submitAnswer() {
+  const userAnswer = Array.from(document.querySelectorAll(".letter-box"))
+    .map((box) => box.textContent)
+    .join("")
+    .trim();
+  const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
+  console.log("Submitted Answer:", userAnswer, "Is Correct:", isCorrect);
 }
 
 // Handle Play button click
 playBtn.addEventListener("click", () => {
   console.log("Play button clicked");
-  if (!selectedLevel) return; // Ensure a level is selected before proceeding
-  startScreen.classList.add("hidden"); // Hide the start screen
+  if (!selectedLevel) return;
+  startScreen.classList.add("hidden");
   console.log("Start screen hidden");
-  gameContainer.classList.remove("hidden"); // Show the game screen
+  gameContainer.classList.remove("hidden");
   console.log("Game container shown");
   fetchClue(); // Fetch the first clue
   console.log("Creating keyboard..."); // Log for keyboard creation
   createKeyboard(); // Set up the keyboard
-});
+);
 
 // Initialize game
 function initGame() {
