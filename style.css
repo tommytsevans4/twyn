@@ -117,7 +117,7 @@ body {
 }
 
 /* Desktop-Specific Adjustments */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   #game-container {
     padding-top: 200px; /* Ensure 200px spacing specifically for desktop */
   .letter-box:focus {
