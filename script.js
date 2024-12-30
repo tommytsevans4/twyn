@@ -1,5 +1,6 @@
+// Declare variables at the top
 const answerBox = document.getElementById("answer-box");
-const keyboard = document.getElementById("keyboard");
+const keyboard = document.getElementById("keyboard"); // Move this above createKeyboard
 const startScreen = document.getElementById("start-screen");
 const gameContainer = document.getElementById("game-container");
 const playBtn = document.getElementById("play-btn");
@@ -94,9 +95,6 @@ function createKeyboard() {
   const row2Keys = "ASDFGHJKL".split("");
   const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫"];
 
-  const keyboard = document.getElementById("keyboard");
-
-  // Create and append row 1
   const row1 = document.createElement("div");
   row1.classList.add("keyboard-row");
   row1Keys.forEach((key) => {
@@ -106,9 +104,7 @@ function createKeyboard() {
     button.addEventListener("click", () => handleKeyboardInput(key));
     row1.appendChild(button);
   });
-  keyboard.appendChild(row1);
 
-  // Create and append row 2
   const row2 = document.createElement("div");
   row2.classList.add("keyboard-row");
   row2Keys.forEach((key) => {
@@ -118,9 +114,7 @@ function createKeyboard() {
     button.addEventListener("click", () => handleKeyboardInput(key));
     row2.appendChild(button);
   });
-  keyboard.appendChild(row2);
 
-  // Create and append row 3
   const row3 = document.createElement("div");
   row3.classList.add("keyboard-row");
   row3Keys.forEach((key) => {
@@ -141,7 +135,12 @@ function createKeyboard() {
     });
     row3.appendChild(button);
   });
+
+  keyboard.appendChild(row1);
+  keyboard.appendChild(row2);
   keyboard.appendChild(row3);
+
+  console.log("Keyboard HTML:", keyboard.innerHTML);
 }
 
 // Handle keyboard input
@@ -181,7 +180,7 @@ playBtn.addEventListener("click", () => {
   gameContainer.classList.remove("hidden");
   console.log("Game container shown");
   fetchClue(); // Fetch the first clue
-  console.log("Creating keyboard..."); // Log for keyboard creation
+  console.log("Creating keyboard...");
   createKeyboard(); // Set up the keyboard
 });
 
