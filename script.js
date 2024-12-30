@@ -112,6 +112,65 @@ function enableSystemKeyboardInput() {
   keyboard.classList.add("hidden");
 }
 
+function createKeyboard() {
+  if (!isMobile) {
+    keyboard.classList.add("hidden"); // Hide keyboard on desktop
+    return;
+  }
+  keyboard.classList.remove("hidden");
+  keyboard.innerHTML = ""; // Clear the keyboard
+
+  const row1Keys = "QWERTYUIOP".split("");
+  const row2Keys = "ASDFGHJKL".split("");
+  const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Del"];
+
+  // Create the rows
+  const row1 = document.createElement("div");
+  row1.classList.add("row-1");
+  row1Keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    button.addEventListener("click", () => handleKeyboardInput(key));
+    row1.appendChild(button);
+  });
+
+  const row2 = document.createElement("div");
+  row2.classList.add("row-2");
+  row2Keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    button.addEventListener("click", () => handleKeyboardInput(key));
+    row2.appendChild(button);
+  });
+
+  const row3 = document.createElement("div");
+  row3.classList.add("row-3");
+  row3Keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    if (key === "Enter" || key === "Del") {
+      button.classList.add("special");
+    }
+    button.addEventListener("click", () => {
+      if (key === "Enter") {
+        submitAnswer();
+      } else if (key === "Del") {
+        handleDelete();
+      } else {
+        handleKeyboardInput(key);
+      }
+    });
+    row3.appendChild(button);
+  });
+
+  keyboard.appendChild(row1);
+  keyboard.appendChild(row2);
+  keyboard.appendChild(row3);
+}
+
 // Handle Play button click
 playBtn.addEventListener("click", () => {
   console.log("Play button clicked");
