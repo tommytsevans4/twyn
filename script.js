@@ -124,7 +124,7 @@ function createKeyboard() {
 
   const row1Keys = "QWERTYUIOP".split("");
   const row2Keys = "ASDFGHJKL".split("");
-  const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Del"];
+  const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫"];
 
   const row1 = document.createElement("div");
   row1.classList.add("row-1");
