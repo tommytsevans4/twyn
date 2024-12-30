@@ -68,6 +68,8 @@ body {
   font-size: 1.2rem;
   cursor: not-allowed;
   transition: background-color 0.3s;
+  position: relative; /* Ensure it stays above other elements */
+  z-index: 10; /* Bring it above other layers */
 }
 
 #play-btn:enabled {
