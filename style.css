@@ -11,7 +11,7 @@ body {
 .screen {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Adjust alignment for content below header */
   align-items: center;
   height: 100vh;
 }
@@ -102,6 +102,13 @@ body {
 
 .word-container {
   display: flex; /* Ensure letters in the same word stay together */
+}
+
+/* Desktop-Specific Adjustments */
+@media (min-width: 1024px) {
+  #game-container {
+    padding-top: 200px; /* Ensure 200px spacing specifically for desktop */
+  }
 }
 
 .letter-box {
