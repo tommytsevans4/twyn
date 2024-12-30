@@ -132,10 +132,15 @@ function showResultScreen(isCorrect) {
 
 // Submit answer function
 function submitAnswer() {
+  // Combine all the letters in the answer boxes
   const userAnswer = Array.from(document.querySelectorAll(".letter-box"))
     .map((box) => box.textContent)
-    .join("");
+    .join("")
+    .trim(); // Ensure no extra spaces are included
+
   const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
+
+  // Show the result screen based on whether the answer is correct
   showResultScreen(isCorrect);
 }
 
