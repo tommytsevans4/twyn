@@ -242,24 +242,21 @@ body {
 /* App Header */
 .app-header {
   display: flex;
+  justify-content: space-between; /* Add space between the logo and text */
   align-items: center;
-  justify-content: space-between;
   background-color: #2F667F;
-  width: 100%;
   padding: 10px 15px;
   color: white;
-  position: fixed; /* Sticks header to the top */
-  top: 0;
-  z-index: 10; /* Ensure header stays above all content */
+  font-size: 1.2rem;
 }
 
 .header-logo {
   width: 30px; /* Adjust size as needed */
   height: auto;
-  margin-right: 10px;
 }
 
 .header-title {
   font-weight: bold;
   font-size: 1.5rem;
+  margin-left: auto; /* Push the title to the right */
 }
