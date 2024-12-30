@@ -58,7 +58,7 @@ body {
 }
 
 #play-btn {
-  background-color: #D5B5B4; /* Disabled state */
+  background-color: #A2BAC4; /* Disabled state */
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,7 +69,7 @@ body {
 }
 
 #play-btn:enabled {
-  background-color: #A2BAC4; /* Enabled state */
+  background-color: #2F667F; /* Enabled state */
   cursor: pointer;
 }
 
@@ -126,7 +126,7 @@ body {
 
 /* Play Again Button */
 #play-again-btn {
-  background-color: #D5B5B4; /* Default state */
+  background-color: #A2BAC4; /* Default state */
   color: white;
   border: none;
   border-radius: 5px;
@@ -137,7 +137,7 @@ body {
 }
 
 #play-again-btn:hover {
-  background-color: #A2BAC4; /* Hover state */
+  background-color: #2F667F; /* Hover state */
 }
 
 /* Results Screen */
