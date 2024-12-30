@@ -127,18 +127,6 @@ body {
   display: none !important; /* Ensure it's completely hidden */
 }
 
-/* Desktop-Specific Adjustments */
-@media (min-width: 768px) {
-  #game-container {
-    padding-top: 200px; /* Ensure 200px spacing specifically for desktop */
-  .letter-box:focus {
-    outline: none; /* Removes the blue outline on desktop */
-    box-shadow: none; /* Ensures no additional focus styling */
-   #start-screen {
-    padding-top: 400px;
-  }
-}
-
 .letter-box {
   display: inline-flex; /* Ensure they are inline and flexible */
   align-items: center; /* Center content vertically */
