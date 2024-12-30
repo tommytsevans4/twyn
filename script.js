@@ -107,26 +107,36 @@ function resetGame() {
 
 // Display result screen
 function showResultScreen(isCorrect) {
+  // Hide the game container
+  gameContainer.classList.add("hidden");
+
+  // Create the results screen
   const resultScreen = document.createElement("div");
-  resultScreen.className = "results-screen";
+  resultScreen.id = "results-screen";
+  resultScreen.className = "screen";
+
   resultScreen.innerHTML = `
-    <div class="results-banner">
-      <h2>${isCorrect ? "Correct!" : "Wrong!"}</h2>
+    <header class="result-header">
+      <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
+    </header>
+    <div class="results-content">
       <div class="answer-display">${correctAnswer}</div>
+      <div class="definitions">
+        <h3>Definitions</h3>
+        <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
+        <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
+      </div>
+      <button id="play-again-btn">Play Again</button>
     </div>
-    <div class="definitions">
-      <h3>Definitions</h3>
-      <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
-      <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
-    </div>
-    <button id="play-again-btn">Play Again</button>
   `;
+
+  // Append the result screen to the body
   document.body.appendChild(resultScreen);
 
   // Add event listener for the "Play Again" button
   document.getElementById("play-again-btn").addEventListener("click", () => {
-    resultScreen.remove();
-    resetGame();
+    resultScreen.remove(); // Remove the results screen
+    initGame(); // Restart the game by showing the start screen
   });
 }
 
