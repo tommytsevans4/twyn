@@ -237,12 +237,16 @@ body {
 /* App Header */
 .app-header {
   display: flex;
-  justify-content: space-between; /* Add space between the logo and text */
+  justify-content: space-between; /* Space between logo and text */
   align-items: center;
+  position: fixed; /* Fixed position to make it stay at the top */
+  top: 0; /* Align to the very top */
+  width: 100%; /* Full width of the screen */
   background-color: #2F667F;
   padding: 10px 15px;
   color: white;
   font-size: 1.2rem;
+  z-index: 1000; /* Ensure it stays above other elements */
 }
 
 .header-logo {
