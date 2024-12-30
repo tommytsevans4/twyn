@@ -49,7 +49,9 @@ function fetchClue() {
     .then((data) => {
       console.log("Clue data:", data); // Log fetched data
       document.querySelector("#clue-box p").textContent = data.clue;
+      console.log("Clue text updated:", data.clue); // Verify clue is updated
       correctAnswer = data.answer.toUpperCase();
+      console.log("Correct answer set:", correctAnswer); // Log the correct answer
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
@@ -61,7 +63,9 @@ function fetchClue() {
 
 // Generate answer boxes
 function generateAnswerBoxes(answer) {
-  answerBox.innerHTML = "";
+  console.log("Generating answer boxes for:", answer); // Log the answer
+  const answerBox = document.getElementById("answer-box");
+  answerBox.innerHTML = ""; // Clear previous boxes
   const words = answer.split(" ");
   words.forEach((word, wordIndex) => {
     const wordContainer = document.createElement("div");
@@ -70,11 +74,13 @@ function generateAnswerBoxes(answer) {
     word.split("").forEach((char) => {
       const box = document.createElement("span");
       box.className = "letter-box";
-      box.textContent = "";
+      box.textContent = ""; // Empty placeholder
       wordContainer.appendChild(box);
     });
 
     answerBox.appendChild(wordContainer);
+
+    // Add a spacer between words
     if (wordIndex < words.length - 1) {
       const spacer = document.createElement("div");
       spacer.className = "spacer";
@@ -82,6 +88,8 @@ function generateAnswerBoxes(answer) {
       answerBox.appendChild(spacer);
     }
   });
+  console.log("Answer boxes generated:", answerBox.innerHTML); // Log generated HTML
+}
 
   if (!isMobile) {
     enableSystemKeyboardInput();
