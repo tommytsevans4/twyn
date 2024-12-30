@@ -194,3 +194,24 @@ body {
   line-height: 1.5;
   margin: 10px 0;
 }
+
+/* App Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  background-color: #2F667F;
+  padding: 10px 15px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header-logo {
+  width: 30px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 10px;
+}
+
+.header-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
