@@ -1,6 +1,6 @@
 // Declare variables at the top
 const answerBox = document.getElementById("answer-box");
-const keyboard = document.getElementById("keyboard"); // Move this above createKeyboard
+const keyboard = document.getElementById("keyboard");
 const startScreen = document.getElementById("start-screen");
 const gameContainer = document.getElementById("game-container");
 const playBtn = document.getElementById("play-btn");
@@ -121,9 +121,14 @@ function createKeyboard() {
     const button = document.createElement("button");
     button.textContent = key;
     button.classList.add("key");
-    if (key === "Enter" || key === "⌫") {
-      button.classList.add("special");
+
+    // Add specific classes for special keys
+    if (key === "Enter") {
+      button.classList.add("special", "enter-key");
+    } else if (key === "⌫") {
+      button.classList.add("special", "delete-key");
     }
+
     button.addEventListener("click", () => {
       if (key === "Enter") {
         submitAnswer();
