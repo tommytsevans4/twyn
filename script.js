@@ -37,6 +37,7 @@ levelButtons.forEach((button) => {
 
 // Fetch the clue from the backend server based on difficulty level
 function fetchClue() {
+  console.log("Fetching clue...");
   fetch(`https://twyn.onrender.com/clue?difficulty=${selectedLevel}`)
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
