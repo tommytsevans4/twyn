@@ -77,23 +77,24 @@ body {
 #game-container {
   max-width: 500px;
   margin: 0 auto;
-  padding-top: 70px; /* To account for fixed header */
+  padding-top: 200px; /* Add padding to position clue and answer sections */
 }
 
 #clue-box {
   background-color: #2F667F;
   color: white;
   padding: 10px;
-  margin: 20px;
+  margin: 20px auto; /* Center clue box horizontally */
   font-size: 1.2rem;
   border-radius: 8px;
+  max-width: 400px; /* Optional: Add a max width */
 }
 
 #answer-box {
   display: flex;
   flex-wrap: wrap; /* Allow wrapping to the next line */
   gap: 10px;
-  justify-content: center; /* Center horizontally */
+  justify-content: center;
   margin: 20px 0;
 }
 
