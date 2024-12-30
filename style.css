@@ -276,18 +276,20 @@ body {
 /* App Header */
 .app-header {
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: flex-start; /* Align "Twyn" to the left */
   align-items: center;
-  position: fixed; /* Fixed position to make it stay at the top */
-  top: 0; /* Align to the very top */
-  width: 100%; /* Full width of the screen */
+  position: fixed; /* Ensure it stays at the top */
+  top: 0;
+  width: 100%;
   background-color: #2F667F;
   padding: 10px 15px;
   color: white;
   font-size: 1.2rem;
-  z-index: 1000; /* Ensure it stays above other elements */
+  z-index: 1000; /* Ensure it's above all other elements */
+  height: 60px; /* Adjust to a consistent size */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
 }
-
+    
 .header-logo {
   width: 30px; /* Adjust size as needed */
   height: auto;
@@ -297,5 +299,5 @@ body {
 .header-title {
   font-weight: bold;
   font-size: 1.5rem;
-  margin-left: 0; /* Ensure no extra spacing on the left */
+  margin-left: 10px; /* Add spacing between logo and title */
 }
