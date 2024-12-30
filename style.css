@@ -123,3 +123,18 @@ body {
   width: 40px;
   margin: 5px;
 }
+
+#play-again-btn {
+  background-color: #D5B5B4; /* Default disabled state */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer; /* Always clickable */
+  transition: background-color 0.3s;
+}
+
+#play-again-btn:hover {
+  background-color: #A2BAC4; /* Hover state */
+}
