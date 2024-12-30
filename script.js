@@ -19,7 +19,7 @@ function updatePlayButtonState() {
     playBtn.style.cursor = "pointer";
     playBtn.disabled = false;
   } else {
-    playBtn.style.backgroundColor = "#D5B5B4";
+    playBtn.style.backgroundColor = "#a2bac4";
     playBtn.style.cursor = "not-allowed";
     playBtn.disabled = true;
   }
