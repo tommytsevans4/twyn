@@ -174,11 +174,14 @@ function createKeyboard() {
 // Handle Play button click
 playBtn.addEventListener("click", () => {
   console.log("Play button clicked");
-  if (!selectedLevel) return;
-  startScreen.classList.add("hidden");
-  gameContainer.classList.remove("hidden");
-  fetchClue();
-  createKeyboard();
+  if (!selectedLevel) return; // Ensure a level is selected before proceeding
+  startScreen.classList.add("hidden"); // Hide the start screen
+  console.log("Start screen hidden");
+  gameContainer.classList.remove("hidden"); // Show the game screen
+  console.log("Game container shown");
+  fetchClue(); // Fetch the first clue
+  console.log("Creating keyboard..."); // Log for keyboard creation
+  createKeyboard(); // Set up the keyboard
 });
 
 // Initialize game
