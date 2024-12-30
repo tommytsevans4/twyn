@@ -96,6 +96,14 @@ function enableSystemKeyboardInput() {
       }
     });
   });
+
+  // Handle "Enter" key submission
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      submitAnswer();
+    }
+  });
+
   keyboard.classList.add("hidden"); // Hide on-screen keyboard
 }
 
@@ -135,40 +143,31 @@ function createKeyboard() {
   const rows = [
     "QWERTYUIOP",
     "ASDFGHJKL",
-    "ZXCVBNM",
+    "ENTERZXCVBNMDEL",
   ];
 
-  rows.forEach((row) => {
+  rows.forEach((row, rowIndex) => {
     const rowContainer = document.createElement("div");
     rowContainer.className = "keyboard-row";
 
     row.split("").forEach((key) => {
       const button = document.createElement("button");
-      button.textContent = key;
+      button.textContent = key === "DEL" ? "←" : key;
       button.classList.add("key");
-      button.addEventListener("click", () => handleKeyboardInput(key));
+      if (key === "ENTER") {
+        button.classList.add("special");
+        button.addEventListener("click", submitAnswer);
+      } else if (key === "DEL") {
+        button.classList.add("special");
+        button.addEventListener("click", handleDelete);
+      } else {
+        button.addEventListener("click", () => handleKeyboardInput(key));
+      }
       rowContainer.appendChild(button);
     });
 
     keyboard.appendChild(rowContainer);
   });
-
-  const actionRow = document.createElement("div");
-  actionRow.className = "keyboard-row";
-
-  const enterButton = document.createElement("button");
-  enterButton.textContent = "Enter";
-  enterButton.classList.add("key", "special");
-  enterButton.addEventListener("click", submitAnswer);
-  actionRow.appendChild(enterButton);
-
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Del";
-  deleteButton.classList.add("key", "special");
-  deleteButton.addEventListener("click", handleDelete);
-  actionRow.appendChild(deleteButton);
-
-  keyboard.appendChild(actionRow);
 }
 
 // Display result screen
