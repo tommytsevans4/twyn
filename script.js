@@ -1,9 +1,9 @@
-const answerBox = document.getElementById('answer-box');
-const keyboard = document.getElementById('keyboard');
-const startScreen = document.getElementById('start-screen');
-const gameContainer = document.getElementById('game-container');
-const playBtn = document.getElementById('play-btn');
-const levelButtons = document.querySelectorAll('.level-btn');
+const answerBox = document.getElementById("answer-box");
+const keyboard = document.getElementById("keyboard");
+const startScreen = document.getElementById("start-screen");
+const gameContainer = document.getElementById("game-container");
+const playBtn = document.getElementById("play-btn");
+const levelButtons = document.querySelectorAll(".level-btn");
 let selectedLevel = ""; // Store the selected difficulty level
 let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
