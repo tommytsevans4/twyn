@@ -110,16 +110,20 @@ function showResultScreen(isCorrect) {
   // Hide the game container
   gameContainer.classList.add("hidden");
 
-  // Create the results screen
+  // Create the results screen dynamically
   const resultScreen = document.createElement("div");
   resultScreen.id = "results-screen";
   resultScreen.className = "screen";
 
   resultScreen.innerHTML = `
-    <header class="result-header">
-      <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
+    <header class="app-header">
+      <img src="twyn-logo.svg" alt="Twyn Logo" class="header-logo" />
+      <span class="header-title">Twyn</span>
     </header>
     <div class="results-content">
+      <div class="result-header">
+        <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
+      </div>
       <div class="answer-display">${correctAnswer}</div>
       <div class="definitions">
         <h3>Definitions</h3>
