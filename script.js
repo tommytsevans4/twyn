@@ -178,7 +178,7 @@ function showResultScreen(isCorrect) {
   resultScreen.className = "screen";
 
   resultScreen.innerHTML = `
-    <header class="app-header">
+    <header class="app-header right-align">
       <img src="twyn-logo.png" alt="Twyn Logo" class="header-logo" />
       <span class="header-title">Twyn</span>
     </header>
