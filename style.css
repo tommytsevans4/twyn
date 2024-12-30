@@ -188,19 +188,14 @@ body {
   text-transform: uppercase;
 }
 
-#keyboard .row-1 {
-  grid-template-columns: repeat(10, 1fr); /* Layout for QWERTY row */
+.row-1,
+.row-2,
+.row-3 {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
 }
-
-#keyboard .row-2 {
-  grid-template-columns: repeat(9, 1fr); /* Layout for ASDF row */
-  margin-left: 20px;
-}
-
-#keyboard .row-3 {
-  grid-template-columns: 1.5fr repeat(7, 1fr) 1.5fr; /* Layout for ZXCV row */
-}
-
+    
 /* Play Again Button */
 #play-again-btn {
   background-color: #A2BAC4; /* Default state */
