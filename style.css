@@ -90,10 +90,14 @@ body {
 
 #answer-box {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow wrapping to the next line */
   gap: 10px;
+  justify-content: center;
   margin: 20px 0;
+}
+
+.word-container {
+  display: flex; /* Ensure letters in the same word stay together */
 }
 
 #keyboard {
@@ -120,8 +124,8 @@ body {
 }
 
 .spacer {
-  width: 40px;
-  margin: 5px;
+  width: 20px; /* Space between words */
+  height: 60px; /* Match letter box height */
 }
 
 /* Play Again Button */
