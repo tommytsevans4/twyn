@@ -7,6 +7,7 @@ body {
   padding: 0;
   touch-action: manipulation; /* Prevent double-tap zoom */
   overflow: hidden; /* Hides the scrollbar and prevents scrolling */
+  height: 100%; /* Ensure the height doesn't extend beyond the viewport */
 }
 
 .screen {
