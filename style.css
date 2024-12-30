@@ -160,12 +160,12 @@ body {
 .keyboard-row {
   display: flex;
   justify-content: center; /* Center align the keys horizontally */
-  gap: 10px; /* Horizontal gap between keys */
+  gap: 5px; /* Horizontal gap between keys */
 }
     
 .key {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   color: #000000; /* Black text */
   background-color: #D4D7DB; /* Light gray background */
   border: none;
@@ -279,6 +279,8 @@ body {
   width: 90px; /* Adjust size as needed */
   height: auto;
   margin-right: 10px; /* Add space between the logo and title */
+  margin-left: 10px; 
+
 }
 
 .header-title {
