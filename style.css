@@ -177,7 +177,7 @@ body {
   width: 96px; /* Set width */
   height: 174px; /* Set height */
   border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 2px; /* Rounded corners */
   text-align: center; /* Center text */
   cursor: pointer; /* Pointer cursor on hover */
   display: flex; /* Use flexbox for alignment */
