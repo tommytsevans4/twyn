@@ -72,9 +72,10 @@ function generateAnswerBoxes(answer) {
 
     word.split("").forEach((char) => {
       const box = document.createElement("span");
-      box.className = "letter-box";
+      box.className = "letter-box"; // Add the class
       box.textContent = ""; // Empty placeholder
       wordContainer.appendChild(box);
+      console.log("Created letter-box:", box.outerHTML); // Log the element
     });
 
     answerBox.appendChild(wordContainer);
@@ -87,7 +88,12 @@ function generateAnswerBoxes(answer) {
       answerBox.appendChild(spacer);
     }
   });
-  console.log("Answer boxes generated:", answerBox.innerHTML); // Log generated HTML
+
+  console.log("Final content of #answer-box:", answerBox.innerHTML); // Log final HTML
+  if (!isMobile) {
+    enableSystemKeyboardInput();
+  }
+}
 
   if (!isMobile) {
     enableSystemKeyboardInput();
