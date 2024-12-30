@@ -9,6 +9,9 @@ let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
 let currentClueData = {}; // Store the current clue data with definitions
 
+// Detect if the user is on a mobile device
+const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 // Enable or disable the Play button based on level selection
 function updatePlayButtonState() {
   if (selectedLevel) {
@@ -25,13 +28,9 @@ function updatePlayButtonState() {
 // Handle level button click
 levelButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    // Remove the active class from all buttons
     levelButtons.forEach((btn) => btn.classList.remove("active"));
-    // Add the active class to the clicked button
     button.classList.add("active");
-    // Update the selected level
     selectedLevel = button.getAttribute("data-level");
-    // Update the Play button state
     updatePlayButtonState();
   });
 });
@@ -40,18 +39,13 @@ levelButtons.forEach((button) => {
 function fetchClue() {
   fetch(`https://twyn.onrender.com/clue?difficulty=${selectedLevel}`)
     .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
     })
     .then((data) => {
-      // Update the clue
       document.querySelector("#clue-box p").textContent = data.clue;
       correctAnswer = data.answer.toUpperCase();
-      currentClueData = data; // Save clue data for definitions
-
-      // Generate the answer boxes
+      currentClueData = data;
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
@@ -61,35 +55,51 @@ function fetchClue() {
     });
 }
 
-// Generate answer boxes based on the given answer
+// Generate answer boxes
 function generateAnswerBoxes(answer) {
-  answerBox.innerHTML = ""; // Clear previous boxes
-
-  const words = answer.split(" "); // Split the answer into words
+  answerBox.innerHTML = "";
+  const words = answer.split(" ");
   words.forEach((word, wordIndex) => {
-    const wordContainer = document.createElement("div"); // Create a container for each word
+    const wordContainer = document.createElement("div");
     wordContainer.className = "word-container";
 
     word.split("").forEach((char) => {
       const box = document.createElement("span");
       box.className = "letter-box";
-      box.textContent = ""; // Empty placeholder
+      box.textContent = "";
       wordContainer.appendChild(box);
     });
 
     answerBox.appendChild(wordContainer);
-
-    // Add a spacer between words, except after the last word
     if (wordIndex < words.length - 1) {
       const spacer = document.createElement("div");
       spacer.className = "spacer";
-      spacer.style.width = "20px"; // Add spacing for spaces in the answer
+      spacer.style.width = "20px";
       answerBox.appendChild(spacer);
     }
   });
+
+  if (!isMobile) {
+    enableSystemKeyboardInput();
+  }
 }
 
-// Handle keyboard input
+// Enable system keyboard input for desktop
+function enableSystemKeyboardInput() {
+  const letterBoxes = document.querySelectorAll(".letter-box");
+  letterBoxes.forEach((box, index) => {
+    box.contentEditable = true;
+    box.addEventListener("input", (e) => {
+      box.textContent = e.target.textContent.toUpperCase().slice(0, 1);
+      if (box.textContent && index < letterBoxes.length - 1) {
+        letterBoxes[index + 1].focus();
+      }
+    });
+  });
+  keyboard.classList.add("hidden"); // Hide on-screen keyboard
+}
+
+// Handle on-screen keyboard input for mobile
 function handleKeyboardInput(key) {
   const letterBoxes = document.querySelectorAll(".letter-box");
   if (currentIndex < letterBoxes.length) {
@@ -103,25 +113,56 @@ function handleDelete() {
   const letterBoxes = document.querySelectorAll(".letter-box");
   if (currentIndex > 0) {
     currentIndex--;
-    letterBoxes[currentIndex].textContent = ""; // Clear the previous box
+    letterBoxes[currentIndex].textContent = "";
   }
 }
 
-// Reset game function (does not reload clue)
+// Reset game function
 function resetGame() {
-  // Clear all boxes
-  document.querySelectorAll(".letter-box").forEach(
-    (box) => (box.textContent = "")
-  );
+  document.querySelectorAll(".letter-box").forEach((box) => (box.textContent = ""));
   currentIndex = 0;
+}
+
+// Create on-screen keyboard for mobile
+function createKeyboard() {
+  if (!isMobile) {
+    keyboard.classList.add("hidden"); // Hide keyboard on desktop
+    return;
+  }
+  keyboard.classList.remove("hidden");
+  const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
+  keyboard.innerHTML = "";
+
+  keys.forEach((key) => {
+    const button = document.createElement("button");
+    button.textContent = key;
+    button.classList.add("key");
+    button.addEventListener("click", () => handleKeyboardInput(key));
+    keyboard.appendChild(button);
+  });
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Del";
+  deleteButton.classList.add("key", "special");
+  deleteButton.addEventListener("click", handleDelete);
+  keyboard.appendChild(deleteButton);
+
+  const resetButton = document.createElement("button");
+  resetButton.textContent = "Reset";
+  resetButton.classList.add("key", "special");
+  resetButton.addEventListener("click", resetGame);
+  keyboard.appendChild(resetButton);
+
+  const enterButton = document.createElement("button");
+  enterButton.textContent = "Enter";
+  enterButton.classList.add("key", "special");
+  enterButton.addEventListener("click", submitAnswer);
+  keyboard.appendChild(enterButton);
 }
 
 // Display result screen
 function showResultScreen(isCorrect) {
-  // Hide the game container
   gameContainer.classList.add("hidden");
-
-  // Create the results screen dynamically
   const resultScreen = document.createElement("div");
   resultScreen.id = "results-screen";
   resultScreen.className = "screen";
@@ -144,81 +185,39 @@ function showResultScreen(isCorrect) {
       <button id="play-again-btn" class="play-btn-style">Play Again</button>
     </div>
   `;
-
-  // Append the result screen to the body
   document.body.appendChild(resultScreen);
 
-  // Add event listener for the "Play Again" button
   document.getElementById("play-again-btn").addEventListener("click", () => {
-    resultScreen.remove(); // Remove the results screen
-    initGame(); // Restart the game by showing the start screen
+    resultScreen.remove();
+    initGame();
   });
 }
 
-// Submit answer function
+// Submit answer
 function submitAnswer() {
-  // Combine all the letters in the answer boxes
   const userAnswer = Array.from(document.querySelectorAll(".letter-box"))
     .map((box) => box.textContent)
     .join("")
-    .trim(); // Ensure no extra spaces are included
-
+    .trim();
   const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
-
-  // Show the result screen based on whether the answer is correct
   showResultScreen(isCorrect);
-}
-
-// Create on-screen keyboard
-function createKeyboard() {
-  const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
-  keyboard.innerHTML = ""; // Clear existing keyboard, if any
-
-  keys.forEach((key) => {
-    const button = document.createElement("button");
-    button.textContent = key;
-    button.classList.add("key");
-    button.addEventListener("click", () => handleKeyboardInput(key));
-    keyboard.appendChild(button);
-  });
-
-  // Add Delete button
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Del";
-  deleteButton.classList.add("key", "special");
-  deleteButton.addEventListener("click", handleDelete);
-  keyboard.appendChild(deleteButton);
-
-  // Add Reset button
-  const resetButton = document.createElement("button");
-  resetButton.textContent = "Reset";
-  resetButton.classList.add("key", "special");
-  resetButton.addEventListener("click", resetGame);
-  keyboard.appendChild(resetButton);
-
-  // Add Enter button
-  const enterButton = document.createElement("button");
-  enterButton.textContent = "Enter";
-  enterButton.classList.add("key", "special");
-  enterButton.addEventListener("click", submitAnswer); // Attach the submitAnswer function
-  keyboard.appendChild(enterButton);
 }
 
 // Handle Play button click
 playBtn.addEventListener("click", () => {
-  if (!selectedLevel) return; // Ensure level is selected before starting
+  if (!selectedLevel) return;
   startScreen.classList.add("hidden");
   gameContainer.classList.remove("hidden");
-  fetchClue(); // Fetch clue based on the selected difficulty
+  fetchClue();
   createKeyboard();
 });
 
-// Initialize the start screen
+// Initialize game
 function initGame() {
   startScreen.classList.remove("hidden");
   gameContainer.classList.add("hidden");
-  selectedLevel = ""; // Reset selected level
-  updatePlayButtonState(); // Reset Play button state
+  selectedLevel = "";
+  updatePlayButtonState();
 }
 
 // Start the game
