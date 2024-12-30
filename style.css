@@ -115,6 +115,8 @@ body {
   .letter-box:focus {
     outline: none; /* Removes the blue outline on desktop */
     box-shadow: none; /* Ensures no additional focus styling */
+  .start-header {
+    margin-top: 400px; /* Add 400px of space on desktop */
   }
 }
 
