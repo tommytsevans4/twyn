@@ -77,6 +77,7 @@ body {
 #game-container {
   max-width: 500px;
   margin: 0 auto;
+  padding-top: 70px; /* To account for fixed header */
 }
 
 #clue-box {
@@ -92,21 +93,12 @@ body {
   display: flex;
   flex-wrap: wrap; /* Allow wrapping to the next line */
   gap: 10px;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
   margin: 20px 0;
 }
 
 .word-container {
   display: flex; /* Ensure letters in the same word stay together */
-}
-
-#keyboard {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 5px;
-  justify-content: center;
-  margin: 20px 0;
-  padding: 0 10px;
 }
 
 .letter-box {
@@ -126,6 +118,54 @@ body {
 .spacer {
   width: 20px; /* Space between words */
   height: 60px; /* Match letter box height */
+}
+
+/* Keyboard */
+#keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Keyboard has 10 equal columns */
+  gap: 5px;
+  justify-content: center;
+  margin: 20px 0;
+  max-width: 500px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Space between rows */
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E0E0E0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.key.special {
+  background-color: #A2BAC4;
+  color: white;
+  grid-column: span 2; /* Special keys span two columns */
+}
+
+.key#enter {
+  background-color: #A2BAC4;
+  color: white;
+  grid-column: span 2; /* Ensure Enter spans appropriately */
+}
+
+.key#delete {
+  background-color: #E57373;
+  color: white;
+  grid-column: span 2; /* Ensure Delete spans appropriately */
 }
 
 /* Play Again Button */
@@ -203,10 +243,14 @@ body {
 .app-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #2F667F;
+  width: 100%;
   padding: 10px 15px;
   color: white;
-  font-size: 1.2rem;
+  position: fixed; /* Sticks header to the top */
+  top: 0;
+  z-index: 10; /* Ensure header stays above all content */
 }
 
 .header-logo {
