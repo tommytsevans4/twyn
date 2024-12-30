@@ -165,8 +165,6 @@ body {
     
 .key {
   font-family: 'Source Sans Pro', sans-serif;
-  width: 50px; /* Width of each box */
-  height: 60px; /* Height of each box */
   font-size: 1.5rem;
   color: #000000; /* Black text */
   background-color: #D4D7DB; /* Light gray background */
@@ -177,8 +175,8 @@ body {
   justify-content: center;
   cursor: pointer;
   font-weight: bold;
-  width: 96px; /* Key width */
-  height: 174px; /* Key height */
+  width: 50px; /* Key width */
+  height: 60px; /* Key height */
 }
 
 .key.special {
