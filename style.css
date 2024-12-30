@@ -153,7 +153,12 @@ body {
   gap: 7px; /* Vertical gap between rows */
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
+  position: fixed; /* Position the keyboard at the bottom */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 0; /* Ensure it's horizontally aligned */
+  width: 100%; /* Full width of the viewport */
+  padding: 10px 0; /* Add padding at the top and bottom */
+  z-index: 100; /* Ensure it stays above other elements */
 }
 
 .keyboard-row {
