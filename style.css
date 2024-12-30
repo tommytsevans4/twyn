@@ -81,7 +81,7 @@ body {
 #game-container {
   max-width: 500px;
   margin: 0 auto;
-  padding-top: 200px; /* Ensure space from the app header */
+  padding-top: 100px; /* Ensure space from the app header */
   padding-bottom: 20px; /* Optional: Add some spacing at the bottom */
   position: relative; /* Ensure proper positioning */
 }
@@ -151,7 +151,7 @@ body {
 #keyboard {
   display: flex;
   flex-direction: column; /* Stack rows vertically */
-  gap: 24px; /* Vertical gap between rows */
+  gap: 7px; /* Vertical gap between rows */
   justify-content: center;
   align-items: center;
   margin: 20px auto;
@@ -160,7 +160,7 @@ body {
 .keyboard-row {
   display: flex;
   justify-content: center; /* Center align the keys horizontally */
-  gap: 18px; /* Horizontal gap between keys */
+  gap: 10px; /* Horizontal gap between keys */
 }
     
 .key {
