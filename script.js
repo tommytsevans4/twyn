@@ -239,7 +239,9 @@ playBtn.addEventListener("click", () => {
   console.log("Play button clicked");
   if (!selectedLevel) return; // Ensure a level is selected before proceeding
   startScreen.classList.add("hidden"); // Hide the start screen
+  console.log("Start screen hidden");
   gameContainer.classList.remove("hidden"); // Show the game screen
+  console.log("Game container shown");
   fetchClue(); // Fetch the first clue
   createKeyboard(); // Set up the keyboard
 });
