@@ -140,19 +140,18 @@ body {
 }
 
 .letter-box {
-  display: inline-flex; /* Inline to flow properly in parent container */
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 60px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 4px solid #2F667F; /* Thick underline */
-  margin: 5px;
-  color: #2F667F;
-  background-color: #fff; /* Optional: Add background for better visibility */
-  outline: none; /* Removes default focus styles */
+  display: inline-flex; /* Ensure they are inline and flexible */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  width: 50px; /* Width of each box */
+  height: 60px; /* Height of each box */
+  font-size: 1.5rem; /* Font size for text */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Ensure letters are uppercase */
+  border-bottom: 4px solid #2F667F; /* Thick bottom border */
+  margin: 5px; /* Spacing between boxes */
+  color: #2F667F; /* Text color */
+  background-color: #fff; /* White background for visibility */
 }
     
 .spacer {
