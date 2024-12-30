@@ -149,21 +149,18 @@ body {
 }
 
 #keyboard {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr); /* Adjust for the top row */
-  gap: 24px 18px; /* 24px vertical gap, 18px horizontal gap */
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  gap: 24px; /* Vertical gap between rows */
   justify-content: center;
+  align-items: center;
   margin: 20px auto;
-  padding: 0 10px;
-  max-width: 90%;
 }
 
 .keyboard-row {
   display: flex;
   justify-content: center; /* Center align the keys horizontally */
   gap: 18px; /* Horizontal gap between keys */
-  margin-bottom: 24px; /* Vertical gap between rows */
-  width: 100%; /* Ensure rows take up the full width */
 }
     
 .key {
@@ -178,13 +175,15 @@ body {
   justify-content: center;
   cursor: pointer;
   font-weight: bold;
+  width: 96px; /* Key width */
+  height: 174px; /* Key height */
 }
-    
+
 .key.special {
-  grid-column: span 2; /* Special keys like "Enter" and "Del" take 2 spaces */
+  width: calc(96px * 2 + 18px); /* Width for special keys spans two keys */
   text-transform: uppercase;
 }
-    
+
 /* Play Again Button */
 #play-again-btn {
   background-color: #A2BAC4; /* Default state */
