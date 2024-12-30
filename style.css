@@ -58,7 +58,7 @@ body {
 }
 
 #play-btn {
-  background-color: #A2BAC4;
+  background-color: #D5B5B4; /* Disabled state */
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,7 +69,7 @@ body {
 }
 
 #play-btn:enabled {
-  background-color: #2F667F;
+  background-color: #A2BAC4; /* Enabled state */
   cursor: pointer;
 }
 
