@@ -235,10 +235,10 @@ function submitAnswer() {
 
 // Handle Play button click
 playBtn.addEventListener("click", () => {
-  if (!selectedLevel) return;
+  if (!selectedLevel) return; // Ensure level is selected before starting
   startScreen.classList.add("hidden");
   gameContainer.classList.remove("hidden");
-  fetchClue();
+  fetchClue(); // Fetch clue based on the selected difficulty
   createKeyboard();
 });
 
