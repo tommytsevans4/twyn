@@ -181,7 +181,7 @@ playBtn.addEventListener("click", () => {
   fetchClue(); // Fetch the first clue
   console.log("Creating keyboard..."); // Log for keyboard creation
   createKeyboard(); // Set up the keyboard
-);
+});
 
 // Initialize game
 function initGame() {
