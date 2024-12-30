@@ -169,7 +169,7 @@ function showResultScreen(isCorrect) {
 
   resultScreen.innerHTML = `
     <header class="app-header">
-      <img src="twyn-logo.svg" alt="Twyn Logo" class="header-logo" />
+      <img src="twyn-logo.png" alt="Twyn Logo" class="header-logo" />
       <span class="header-title">Twyn</span>
     </header>
     <div class="results-content">
