@@ -64,7 +64,6 @@ function fetchClue() {
 // Generate answer boxes
 function generateAnswerBoxes(answer) {
   console.log("Generating answer boxes for:", answer); // Log the answer
-  const answerBox = document.getElementById("answer-box");
   answerBox.innerHTML = ""; // Clear previous boxes
   const words = answer.split(" ");
   words.forEach((word, wordIndex) => {
@@ -89,7 +88,6 @@ function generateAnswerBoxes(answer) {
     }
   });
   console.log("Answer boxes generated:", answerBox.innerHTML); // Log generated HTML
-}
 
   if (!isMobile) {
     enableSystemKeyboardInput();
