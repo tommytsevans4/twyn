@@ -94,8 +94,9 @@ function createKeyboard() {
   const row2Keys = "ASDFGHJKL".split("");
   const row3Keys = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫"];
 
+  // Create the first row
   const row1 = document.createElement("div");
-  row1.classList.add("row-1");
+  row1.classList.add("keyboard-row");
   row1Keys.forEach((key) => {
     const button = document.createElement("button");
     button.textContent = key;
@@ -104,8 +105,9 @@ function createKeyboard() {
     row1.appendChild(button);
   });
 
+  // Create the second row
   const row2 = document.createElement("div");
-  row2.classList.add("row-2");
+  row2.classList.add("keyboard-row");
   row2Keys.forEach((key) => {
     const button = document.createElement("button");
     button.textContent = key;
@@ -114,14 +116,15 @@ function createKeyboard() {
     row2.appendChild(button);
   });
 
+  // Create the third row
   const row3 = document.createElement("div");
-  row3.classList.add("row-3");
+  row3.classList.add("keyboard-row");
   row3Keys.forEach((key) => {
     const button = document.createElement("button");
     button.textContent = key;
     button.classList.add("key");
     if (key === "Enter" || key === "⌫") {
-      button.classList.add("special");
+      button.classList.add("special"); // Add special styling for "Enter" and "⌫"
     }
     button.addEventListener("click", () => {
       if (key === "Enter") {
@@ -135,6 +138,7 @@ function createKeyboard() {
     row3.appendChild(button);
   });
 
+  // Append rows to the keyboard container
   keyboard.appendChild(row1);
   keyboard.appendChild(row2);
   keyboard.appendChild(row3);
