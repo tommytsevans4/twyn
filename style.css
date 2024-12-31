@@ -150,7 +150,7 @@ body {
 #keyboard {
   display: flex;
   flex-direction: column; /* Stack rows vertically */
-  gap: 7px; /* Vertical gap between rows */
+  gap: 3px; /* Vertical gap between rows */
   justify-content: center;
   align-items: center;
   position: fixed; /* Position the keyboard at the bottom */
@@ -164,7 +164,7 @@ body {
 .keyboard-row {
   display: flex;
   justify-content: center; /* Center align the keys horizontally */
-  gap: 5px; /* Horizontal gap between keys */
+  gap: 3px; /* Horizontal gap between keys */
 }
     
 .key {
@@ -179,7 +179,7 @@ body {
   justify-content: center;
   cursor: pointer;
   font-weight: bold;
-  width: 30px; /* Key width */
+  width: 25px; /* Key width */
   height: 50px; /* Key height */
 }
 
@@ -192,7 +192,7 @@ body {
 
 .delete-key {
   width: 40px; /* Define a width for the delete/backspace key */
-  font-size: 1.5rem; /* Set font size for the Delete key */
+  font-size: 2.0rem; /* Set font size for the Delete key */
   font-weight: bold; /* Ensure consistent font weight */
 }
 
