@@ -245,7 +245,7 @@ input, select, textarea, button {
   font-family: 'Source Sans Pro', sans-serif;
   padding: 20px;
   margin-top: 60px; /* Add margin to push content below the header */
-  padding-top: 70px; /* Ensure content starts below the header height */
+  padding-top: 200px; /* Ensure content starts below the header height */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
 }
 
