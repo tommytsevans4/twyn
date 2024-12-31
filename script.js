@@ -172,8 +172,30 @@ function submitAnswer() {
     .map((box) => box.textContent)
     .join("")
     .trim();
-  const isCorrect = userAnswer === correctAnswer.replace(/ /g, "");
+  const isCorrect = userAnswer === correctAnswer.replace(/ /g, "").toUpperCase();
   console.log("Submitted Answer:", userAnswer, "Is Correct:", isCorrect);
+
+  // Navigate to results
+  showResultScreen(isCorrect);
+}
+
+// Display the results screen
+function showResultScreen(isCorrect) {
+  gameContainer.classList.add("hidden");
+
+  const resultScreen = document.createElement("div");
+  resultScreen.className = "screen";
+  resultScreen.innerHTML = `
+    <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
+    <p>The correct answer was: ${correctAnswer}</p>
+    <button id="play-again-btn">Play Again</button>
+  `;
+  document.body.appendChild(resultScreen);
+
+  document.getElementById("play-again-btn").addEventListener("click", () => {
+    resultScreen.remove();
+    initGame();
+  });
 }
 
 // Handle Play button click
@@ -181,12 +203,9 @@ playBtn.addEventListener("click", () => {
   console.log("Play button clicked");
   if (!selectedLevel) return;
   startScreen.classList.add("hidden");
-  console.log("Start screen hidden");
   gameContainer.classList.remove("hidden");
-  console.log("Game container shown");
-  fetchClue(); // Fetch the first clue
-  console.log("Creating keyboard...");
-  createKeyboard(); // Set up the keyboard
+  fetchClue();
+  createKeyboard();
 });
 
 // Initialize game
