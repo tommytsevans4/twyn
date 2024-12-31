@@ -199,6 +199,14 @@ function showResultScreen(isCorrect) {
   // Create the result screen container
   const resultScreen = document.createElement("div");
   resultScreen.className = "screen";
+
+    // Generate the definitions content dynamically
+  const definitionContent = `
+    <h3>Definitions</h3>
+    <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
+    <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
+  `;
+
   
   // Add the app header and results content
   resultScreen.innerHTML = `
@@ -207,8 +215,9 @@ function showResultScreen(isCorrect) {
     </header>
     <div class="results-content">
       <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
-      <p>The correct answer was: ${correctAnswer}</p>
-      <button id="play-again-btn">Play Again</button>
+      <div class="answer-display">${correctAnswer}</div>
+      <div class="definitions">${definitionContent}</div>
+      <button id="play-again-btn" class="play-again-btn">Play Again</button>
     </div>
   `;
 
