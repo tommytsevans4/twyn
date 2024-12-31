@@ -179,8 +179,8 @@ body {
   justify-content: center;
   cursor: pointer;
   font-weight: bold;
-  width: 25px; /* Key width */
-  height: 50px; /* Key height */
+  width: 20px; /* Key width */
+  height: 60px; /* Key height */
 }
 
 .enter-key {
@@ -191,7 +191,7 @@ body {
 }
 
 .delete-key {
-  width: 40px; /* Define a width for the delete/backspace key */
+  width: 30px; /* Define a width for the delete/backspace key */
   font-size: 2.0rem; /* Set font size for the Delete key */
   font-weight: bold; /* Ensure consistent font weight */
 }
