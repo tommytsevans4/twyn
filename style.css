@@ -239,15 +239,32 @@ input, select, textarea, button {
   text-align: center;
 }
 
+.results-content {
+  background-color: #2F667F;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+.results-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .answer-display {
+  background-color: #5E8690;
   font-size: 1.5rem;
   font-weight: bold;
   color: #f4f4f9;
-  background-color: #5E8690;
-  padding: 15px;
-  margin: 20px 0;
+  padding: 20px;
+  margin: 20px auto;
   border-radius: 8px;
-  width: fit-content;
+  max-width: 80%;
+  text-transform: uppercase;
 }
 
 .definitions {
@@ -260,15 +277,15 @@ input, select, textarea, button {
 }
 
 .definitions h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .definitions p {
   font-size: 1rem;
-  line-height: 1.5;
   margin: 10px 0;
+  line-height: 1.5;
 }
 
 /* App Header */
