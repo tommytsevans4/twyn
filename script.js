@@ -46,14 +46,26 @@ function fetchClue() {
     })
     .then((data) => {
       console.log("Clue data:", data);
-      document.querySelector("#clue-box p").textContent = data.clue;
+
+      // Clear any existing content in the clue box
+      const clueBox = document.getElementById("clue-box");
+      clueBox.innerHTML = ""; // Clear loading text or placeholder
+
+      // Add the clue dynamically
+      const clueText = document.createElement("p");
+      clueText.textContent = data.clue;
+      clueBox.appendChild(clueText);
+
+      // Set the correct answer for the game
       correctAnswer = data.answer.toUpperCase();
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
       console.error("Error fetching clue:", error);
-      document.querySelector("#clue-box p").textContent =
-        "Failed to load clue. Please try again later.";
+
+      // Display an error message in the clue box
+      const clueBox = document.getElementById("clue-box");
+      clueBox.innerHTML = "<p>Failed to load clue. Please try again later.</p>";
     });
 }
 
