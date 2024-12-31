@@ -244,7 +244,7 @@ input, select, textarea, button {
   color: #FFFFFF; /* Existing text color */
   font-family: 'Source Sans Pro', sans-serif;
   padding: 20px;
-  margin-top: 20px; /* Add margin to push content below the header */
+  margin-top: 60px; /* Add margin to push content below the header */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
 }
 
