@@ -204,7 +204,6 @@ function showResultScreen(isCorrect) {
   resultScreen.innerHTML = `
     <header class="app-header">
       <img src="/twyn-logo-white.png" alt="Twyn Logo" class="header-logo" />
-      <span class="header-title">Twyn</span>
     </header>
     <div class="results-content">
       <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
