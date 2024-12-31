@@ -193,17 +193,30 @@ function submitAnswer() {
 
 // Display the results screen
 function showResultScreen(isCorrect) {
+  // Hide the game container
   gameContainer.classList.add("hidden");
 
+  // Create the result screen container
   const resultScreen = document.createElement("div");
   resultScreen.className = "screen";
+  
+  // Add the app header and results content
   resultScreen.innerHTML = `
-    <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
-    <p>The correct answer was: ${correctAnswer}</p>
-    <button id="play-again-btn">Play Again</button>
+    <header class="app-header">
+      <img src="/twyn-logo-white.png" alt="Twyn Logo" class="header-logo" />
+      <span class="header-title">Twyn</span>
+    </header>
+    <div class="results-content">
+      <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
+      <p>The correct answer was: ${correctAnswer}</p>
+      <button id="play-again-btn">Play Again</button>
+    </div>
   `;
+
+  // Append the results screen to the body
   document.body.appendChild(resultScreen);
 
+  // Add functionality to the "Play Again" button
   document.getElementById("play-again-btn").addEventListener("click", () => {
     resultScreen.remove();
     initGame();
