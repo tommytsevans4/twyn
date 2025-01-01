@@ -45,30 +45,28 @@ function fetchClue() {
       return response.json();
     })
     .then((data) => {
-      console.log("Clue data:", data);
+      console.log("Backend response data:", data);
 
-      // Clear any existing content in the clue box
       const clueBox = document.getElementById("clue-box");
       clueBox.innerHTML = ""; // Clear loading text or placeholder
 
-      // Add the clue dynamically
       const clueText = document.createElement("p");
-      clueText.textContent = data.clue;
+      clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
-      // Set the correct answer for the game
-      correctAnswer = data.answer.toUpperCase();
+      correctAnswer = data.answer?.toUpperCase() || "ANSWER";
 
-      // Set currentClueData for the results screen
+      // Safeguard for undefined fields
       currentClueData = {
-        word1: data.word1,
-        partOfSpeech1: data.partOfSpeech1,
-        definition1: data.definition1,
-        word2: data.word2,
-        partOfSpeech2: data.partOfSpeech2,
-        definition2: data.definition2,
+        word1: data.word1 || "N/A",
+        partOfSpeech1: data.partOfSpeech1 || "N/A",
+        definition1: data.definition1 || "Definition not available",
+        word2: data.word2 || "N/A",
+        partOfSpeech2: data.partOfSpeech2 || "N/A",
+        definition2: data.definition2 || "Definition not available",
       };
 
+      console.log("Current Clue Data:", currentClueData);
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
