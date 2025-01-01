@@ -203,14 +203,17 @@ input, select, textarea, button {
 
 /* Play Again Button */
 #play-again-btn {
-  background-color: #2F667F; /* Default state */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: pointer; /* Always clickable */
-  transition: background-color 0.3s;
+  background-color: #5E8690; /* Match the color of the answer box */
+  color: #FFFFFF; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Add padding for better appearance */
+  font-size: 1.2rem; /* Adjust font size */
+  cursor: pointer; /* Show pointer on hover */
+  text-align: center; /* Center text inside the button */
+  display: block; /* Ensure it's treated as a block for centering */
+  margin: 20px auto 0; /* Center horizontally and add margin above */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 #play-again-btn:hover {
