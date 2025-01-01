@@ -177,7 +177,7 @@ input, select, textarea, button {
   color: #000000; /* Black text */
   background-color: #D4D7DB; /* Light gray background */
   border: none;
-  border-radius: 10px; /* Slightly rounded corners */
+  border-radius: 5px; /* Slightly rounded corners */
   display: flex;
   align-items: center;
   justify-content: center;
