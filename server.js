@@ -12,8 +12,26 @@ app.use(express.json());
 
 // Hardcoded clues for fallback or testing
 const hardcodedClues = [
-  { clue: "Illegally acquire metal", answer: "STEAL THE STEEL" },
-  { clue: "Bark of a tree or sound of a dog", answer: "BARK THE BARK" }
+  {
+    clue: "Illegally acquire metal",
+    answer: "STEAL THE STEEL",
+    word1: "STEAL",
+    partOfSpeech1: "verb",
+    definition1: "Take another's property illegally.",
+    word2: "STEEL",
+    partOfSpeech2: "noun",
+    definition2: "A metal alloy primarily made of iron."
+  },
+  {
+    clue: "Bark of a tree or sound of a dog",
+    answer: "BARK THE BARK",
+    word1: "BARK",
+    partOfSpeech1: "noun",
+    definition1: "The outer covering of a tree.",
+    word2: "BARK",
+    partOfSpeech2: "verb",
+    definition2: "The sound made by a dog."
+  }
 ];
 
 // Google Sheets URL for dynamic clues
@@ -28,9 +46,18 @@ app.get('/clue', async (req, res) => {
     // Parse CSV rows into clue objects
     const rows = response.data.split('\n').slice(1); // Skip the header row
     const clues = rows.map(row => {
-      const [clue, answer] = row.split(',');
+      const [clue, answer, word1, partOfSpeech1, definition1, word2, partOfSpeech2, definition2] = row.split(',');
       if (clue && answer) {
-        return { clue: clue.trim(), answer: answer.trim() }; // Trim whitespace
+        return {
+          clue: clue.trim(),
+          answer: answer.trim(),
+          word1: word1 ? word1.trim() : "N/A",
+          partOfSpeech1: partOfSpeech1 ? partOfSpeech1.trim() : "N/A",
+          definition1: definition1 ? definition1.trim() : "Definition not available",
+          word2: word2 ? word2.trim() : "N/A",
+          partOfSpeech2: partOfSpeech2 ? partOfSpeech2.trim() : "N/A",
+          definition2: definition2 ? definition2.trim() : "Definition not available"
+        };
       }
       return null;
     }).filter(clue => clue); // Filter out invalid rows
