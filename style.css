@@ -52,6 +52,7 @@ input, select, textarea, button {
   margin: 5px;
   font-size: 1rem;
   background-color: #A2BAC4;
+  font-family: 'Source Sans Pro', sans-serif;
   color: white;
   border: none;
   border-radius: 5px;
@@ -65,6 +66,7 @@ input, select, textarea, button {
 
 #play-btn {
   background-color: #A2BAC4; /* Disabled state */
+  font-family: 'Source Sans Pro', sans-serif;
   color: white;
   border: none;
   border-radius: 5px;
@@ -92,6 +94,7 @@ input, select, textarea, button {
 
 #clue-box {
   background-color: #2F667F;
+  font-family: 'Source Sans Pro', sans-serif;
   color: white;
   padding: 10px;
   margin: 20px auto; /* Center clue box horizontally */
@@ -204,6 +207,7 @@ input, select, textarea, button {
 /* Play Again Button */
 #play-again-btn {
   background-color: #5E8690; /* Match the color of the answer box */
+  font-family: 'Source Sans Pro', sans-serif;
   color: #FFFFFF; /* White text */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
