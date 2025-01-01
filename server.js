@@ -47,16 +47,16 @@ app.get('/clue', async (req, res) => {
     const rows = response.data.split('\n').slice(1); // Skip the header row
     const clues = rows.map(row => {
       const [clue, answer, word1, partOfSpeech1, definition1, word2, partOfSpeech2, definition2] = row.split(',');
-      if (clue && answer) {
+      if (clue && answer && word1 && partOfSpeech1 && definition1 && word2 && partOfSpeech2 && definition2) {
         return {
           clue: clue.trim(),
           answer: answer.trim(),
-          word1: word1 ? word1.trim() : "N/A",
-          partOfSpeech1: partOfSpeech1 ? partOfSpeech1.trim() : "N/A",
-          definition1: definition1 ? definition1.trim() : "Definition not available",
-          word2: word2 ? word2.trim() : "N/A",
-          partOfSpeech2: partOfSpeech2 ? partOfSpeech2.trim() : "N/A",
-          definition2: definition2 ? definition2.trim() : "Definition not available"
+          word1: word1.trim(),
+          partOfSpeech1: partOfSpeech1.trim(),
+          definition1: definition1.trim(),
+          word2: word2.trim(),
+          partOfSpeech2: partOfSpeech2.trim(),
+          definition2: definition2.trim()
         };
       }
       return null;
