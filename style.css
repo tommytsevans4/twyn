@@ -245,15 +245,16 @@ input, select, textarea, button {
   background: #2F667F; /* Existing background color */
   color: #FFFFFF; /* Existing text color */
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 20px;
+  padding: 40px; /* Add consistent padding on all sides */
   margin: auto; /* Center vertically and horizontally */
-  width: 80%; /* Optional: Adjust width for consistent appearance */
+  width: calc(100% - 80px); /* Account for left and right padding */
+  max-width: 500px; /* Optional: Limit the max width for larger screens */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
   border-radius: 5px; /* Match the rounded corners of the answer box */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Evenly distribute content */
-  height: calc(100vh - 120px); /* Adjust height dynamically based on viewport */
+  justify-content: center; /* Center content inside */
+  height: calc(100vh - 80px); /* Account for top and bottom padding */
 }
 
 .results-content h1 {
