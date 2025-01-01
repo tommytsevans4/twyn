@@ -96,7 +96,7 @@ input, select, textarea, button {
   padding: 10px;
   margin: 20px auto; /* Center clue box horizontally */
   font-size: 1.2rem;
-  border-radius: 8px;
+  border-radius: 5px;
   max-width: 400px; /* Optional: Add a max width */
 }
 
@@ -248,6 +248,7 @@ input, select, textarea, button {
   margin-top: 100px; /* Add margin to push content below the header */
   padding-top: 50px; /* Ensure content starts below the header height */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
+  border-radius: 5px; /* Match the rounded corners of the answer box */
 }
 
 .results-content h1 {
@@ -263,7 +264,7 @@ input, select, textarea, button {
   color: #f4f4f9;
   padding: 20px;
   margin: 20px auto;
-  border-radius: 8px;
+  border-radius: 5px;
   max-width: 80%;
   text-transform: uppercase;
 }
@@ -272,7 +273,7 @@ input, select, textarea, button {
   background-color: #2F667F;
   color: white;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 5px;
   text-align: left;
   max-width: 500px;
 }
