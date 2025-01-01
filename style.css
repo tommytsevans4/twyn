@@ -252,16 +252,11 @@ input, select, textarea, button {
   background: #2F667F; /* Existing background color */
   color: #FFFFFF; /* Existing text color */
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 40px; /* Add consistent padding on all sides */
-  margin: auto; /* Center vertically and horizontally */
-  width: calc(100% - 80px); /* Account for left and right padding */
-  max-width: 500px; /* Optional: Limit the max width for larger screens */
+  padding: 40px; /* Equal padding on all sides for a balanced look */
+  margin: 0 auto; /* Center the content */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
   border-radius: 5px; /* Match the rounded corners of the answer box */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content inside */
-  height: calc(100vh - 80px); /* Account for top and bottom padding */
+  max-width: 90%; /* Prevent overflow and keep the layout responsive */
 }
 
 .results-content h1 {
