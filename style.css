@@ -228,11 +228,12 @@ input, select, textarea, button {
 #results-screen {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center;
-  height: calc(100vh - 40px); /* Account for the header height */
-  background-color: #f4f4f9;
-  padding: 20px;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Full viewport height */
+  padding: 40px; /* Add consistent padding around the screen */
+  background-color: #f4f4f9; /* Background color of the page */
+  box-sizing: border-box; /* Ensure padding is included in the dimensions */
 }
 
 .result-header {
@@ -248,14 +249,13 @@ input, select, textarea, button {
 }
 
 .results-content {
-  background: #2F667F; /* Existing background color */
-  color: #FFFFFF; /* Existing text color */
+  background: #2F667F; /* Background color */
+  color: #FFFFFF; /* Text color */
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 40px; /* Equal padding inside the content box */
-  margin: 20px; /* External margin for the white space */
-  box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
-  border-radius: 5px; /* Rounded corners to match the design */
-  max-width: 90%; /* Keep content responsive */
+  padding: 40px; /* Equal padding on all sides */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Ensure padding is part of dimensions */
+  max-width: 90%; /* Ensure responsiveness */
   text-align: center; /* Center-align text */
 }
 
