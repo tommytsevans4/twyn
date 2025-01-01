@@ -235,6 +235,7 @@ input, select, textarea, button {
   background-color: #2F667F;
   width: 100%;
   padding: 10px 0;
+  padding-top: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -245,7 +246,7 @@ input, select, textarea, button {
   font-family: 'Source Sans Pro', sans-serif;
   padding: 20px;
   margin-top: 60px; /* Add margin to push content below the header */
-  padding-top: 200px; /* Ensure content starts below the header height */
+  padding-top: 50px; /* Ensure content starts below the header height */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
 }
 
