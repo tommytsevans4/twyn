@@ -246,10 +246,14 @@ input, select, textarea, button {
   color: #FFFFFF; /* Existing text color */
   font-family: 'Source Sans Pro', sans-serif;
   padding: 20px;
-  margin-top: 100px; /* Add margin to push content below the header */
-  padding-top: 50px; /* Ensure content starts below the header height */
+  margin: auto; /* Center vertically and horizontally */
+  width: 80%; /* Optional: Adjust width for consistent appearance */
   box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
   border-radius: 5px; /* Match the rounded corners of the answer box */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Evenly distribute content */
+  height: calc(100vh - 120px); /* Adjust height dynamically based on viewport */
 }
 
 .results-content h1 {
