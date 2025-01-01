@@ -4,9 +4,9 @@ const axios = require('axios');
 const app = express();
 
 // Allow requests from your front-end origin
-app.use(cors({ origin: 'https://playtwyn.com' })); // Replace with your front-end URL
-
-app.listen(3000, () => console.log('Server is running on port 3000'));
+app.use(cors({
+  origin: ['https://playtwyn.com', 'http://localhost:3000'] // Add localhost for development
+}));
 
 app.use(express.json());
 
@@ -29,15 +29,18 @@ app.get('/clue', async (req, res) => {
     const rows = response.data.split('\n').slice(1); // Skip the header row
     const clues = rows.map(row => {
       const [clue, answer] = row.split(',');
-      return { clue: clue.trim(), answer: answer.trim() }; // Trim whitespace
-    });
+      if (clue && answer) {
+        return { clue: clue.trim(), answer: answer.trim() }; // Trim whitespace
+      }
+      return null;
+    }).filter(clue => clue); // Filter out invalid rows
 
     // Select a random clue
     const randomClue = clues[Math.floor(Math.random() * clues.length)];
     res.json(randomClue);
 
   } catch (error) {
-    console.error('Error fetching Google Sheet:', error);
+    console.error('Error fetching Google Sheet:', error.message);
 
     // Fallback to hardcoded clues if Google Sheets fails
     const fallbackClue = hardcodedClues[Math.floor(Math.random() * hardcodedClues.length)];
