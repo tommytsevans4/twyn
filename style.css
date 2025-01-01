@@ -227,13 +227,12 @@ input, select, textarea, button {
 /* Results Screen */
 #results-screen {
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  height: calc(100vh - 80px); /* Adjust height to account for the padding */
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;
+  height: calc(100vh - 40px); /* Account for the header height */
   background-color: #f4f4f9;
-  padding: 40px; /* Add 40px padding on all sides */
-  box-sizing: border-box; /* Ensure padding doesn't overflow */
-  text-align: center;
+  padding: 20px;
 }
 
 .result-header {
@@ -252,11 +251,12 @@ input, select, textarea, button {
   background: #2F667F; /* Existing background color */
   color: #FFFFFF; /* Existing text color */
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 40px; /* Equal padding on all sides */
-  margin: 20px; /* Add margin for external white space */
-  box-sizing: border-box; /* Include padding in width/height calculations */
+  padding: 40px; /* Equal padding inside the content box */
+  margin: 20px; /* External margin for the white space */
+  box-sizing: border-box; /* Ensure padding doesn't affect layout width/height */
   border-radius: 5px; /* Rounded corners to match the design */
   max-width: 90%; /* Keep content responsive */
+  text-align: center; /* Center-align text */
 }
 
 .results-content h1 {
