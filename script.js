@@ -228,7 +228,8 @@ function showResultScreen(isCorrect) {
       <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
       <div class="answer-display">${correctAnswer}</div>
       <div class="definitions">
-    <div class="definitions">${definitionContent}</div>
+        ${definitionContent}
+      </div>
       <button id="play-again-btn">Play Again</button>
     </div>
   `;
