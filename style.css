@@ -84,6 +84,18 @@ input, select, textarea, button {
 }
 
 /* Game Screen */
+
+#attempt-symbols {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between symbol pairs */
+  margin-top: 20px;
+}
+
+.attempt-symbol {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
 #game-container {
   max-width: 500px;
   margin: 0 auto;
