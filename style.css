@@ -105,7 +105,7 @@ input, select, textarea, button {
   flex-wrap: wrap; /* Allows wrapping to the next line */
   gap: 5px; /* Adjusted for smaller gaps */
   justify-content: center;
-  align-items: flex-start; /* Align letters to the top of the container */
+  align-items: center; /* Align letters to the top of the container */
   margin: 20px auto; /* Centers horizontally */
   max-width: 90%; /* Prevents overflow */
   overflow: visible; /* Ensures visibility of child elements */
@@ -113,6 +113,7 @@ input, select, textarea, button {
 
 .word-container {
   display: flex; /* Ensure letters in the same word stay together */
+  justify-content: center; /* Center-aligns each word */
 }
 
 #start-screen {
