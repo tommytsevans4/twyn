@@ -252,7 +252,7 @@ input, select, textarea, button {
   background: #2F667F; /* Existing background color */
   color: #FFFFFF; /* Text color */
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 120px 40px 40px 40px; /* Top, Right, Bottom, Left */
+  padding: 160px 40px 40px 40px; /* Top, Right, Bottom, Left */
   border-radius: 5px; /* Maintain rounded corners */
   box-sizing: border-box; /* Include padding in the dimensions */
   max-width: 90%; /* Ensure responsiveness */
