@@ -281,6 +281,7 @@ input, select, textarea, button {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center; /* Center the heading */
 }
 
 .definitions p {
