@@ -58,6 +58,17 @@ function fetchClue() {
 
       // Set the correct answer for the game
       correctAnswer = data.answer.toUpperCase();
+
+      // Set currentClueData for the results screen
+      currentClueData = {
+        word1: data.word1,
+        partOfSpeech1: data.partOfSpeech1,
+        definition1: data.definition1,
+        word2: data.word2,
+        partOfSpeech2: data.partOfSpeech2,
+        definition2: data.definition2,
+      };
+
       generateAnswerBoxes(correctAnswer);
     })
     .catch((error) => {
@@ -217,10 +228,7 @@ function showResultScreen(isCorrect) {
       <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
       <div class="answer-display">${correctAnswer}</div>
       <div class="definitions">
-        <h3>Definitions</h3>
-        <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
-        <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
-      </div>
+    <div class="definitions">${definitionContent}</div>
       <button id="play-again-btn">Play Again</button>
     </div>
   `;
