@@ -302,4 +302,6 @@ function initGame() {
 }
 
 // Start the game
-initGame();
+document.addEventListener("DOMContentLoaded", () => {
+  initGame();
+});
