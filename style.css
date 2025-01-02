@@ -117,7 +117,7 @@ input, select, textarea, button {
   font-size: 1.2rem;
   border-radius: 5px;
   max-width: 400px; /* Optional: Add a max width */
-  line-height: 1.4; /* Adjust line height to keep text compact */
+  line-height: 1.0; /* Adjust line height to keep text compact */
 }
 
 #answer-box {
