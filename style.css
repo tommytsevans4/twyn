@@ -113,10 +113,11 @@ input, select, textarea, button {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   padding: 10px;
-  margin: 20px auto; /* Center clue box horizontally */
+  margin: 10px auto; /* Center clue box horizontally */
   font-size: 1.2rem;
   border-radius: 5px;
   max-width: 400px; /* Optional: Add a max width */
+  line-height: 1.4; /* Adjust line height to keep text compact */
 }
 
 #answer-box {
