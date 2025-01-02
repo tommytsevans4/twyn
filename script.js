@@ -95,6 +95,7 @@ function initializeAttempts() {
     symbolPair.className = "attempt-symbol";
     symbolPair.textContent = "유유"; // Korean symbols
     symbolPair.style.color = "#2F667F"; // Default color
+    symbolPair.style.opacity = "1"; // Default opacity
     attemptSymbols.appendChild(symbolPair);
   }
 }
@@ -228,7 +229,7 @@ function submitAnswer() {
   attempts++;
   if (attempts < maxAttempts) {
     // Update the attempt symbol color for the current attempt
-    attemptSymbols.children[attempts - 1].style.color = "#f4f4f9";
+    attemptSymbols.children[attempts - 1].style.opacity = "0.3";
 
     // Clear letter boxes for the next attempt
     clearLetterBoxes();
