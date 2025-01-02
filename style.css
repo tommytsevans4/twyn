@@ -87,16 +87,15 @@ input, select, textarea, button {
 
 .attempt-symbols {
   display: flex;
-  justify-content: right; /* Align the symbols to the right */
-  margin-top: 10px; /* Space below the header */
-  font-size: 1rem; /* Smaller font size for symbols */
-  color: #2F667F; /* Default color */
-  gap: 10px; /* Space between symbol pairs */
+  justify-content: flex-end; /* Align the symbols to the right */
+  margin: 10px 20px; /* Adjust margin as needed */
+  gap: 15px; /* Space between symbol pairs */
 }
 
 .attempt-symbol {
   font-weight: bold;
-  font-size: 1.5rem;
+  color: #2F667F; /* Default color */
+  font-size: 1.0rem;
 }
 
 #game-container {
