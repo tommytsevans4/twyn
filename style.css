@@ -87,7 +87,7 @@ input, select, textarea, button {
 
 .attempt-symbols {
   display: flex;
-  justify-content: flex-end; /* Center align the symbols horizontally */
+  justify-content: right; /* Align the symbols to the right */
   margin-top: 10px; /* Space below the header */
   font-size: 1rem; /* Smaller font size for symbols */
   color: #2F667F; /* Default color */
