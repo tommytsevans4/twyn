@@ -85,11 +85,13 @@ input, select, textarea, button {
 
 /* Game Screen */
 
-.attempt-symbols {
+#attempt-symbols {
   display: flex;
   justify-content: flex-end; /* Align the symbols to the right */
-  margin: 10px 20px; /* Adjust margin as needed */
-  gap: 15px; /* Space between symbol pairs */
+  align-items: center; /* Center vertically within the container */
+  margin: 10px 20px 0 20px; /* Add some spacing around */
+  font-size: 1.0rem; /* Adjust font size as needed */
+  gap: 10px; /* Add spacing between the pairs of symbols */
 }
 
 .attempt-symbol {
