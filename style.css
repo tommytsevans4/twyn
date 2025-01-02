@@ -91,7 +91,7 @@ input, select, textarea, button {
   align-items: center; /* Center vertically within the container */
   margin: 10px 20px 0 20px; /* Add some spacing around */
   font-size: 1.0rem; /* Adjust font size as needed */
-  gap: 10px; /* Add spacing between the pairs of symbols */
+  gap: 15px; /* Add spacing between the pairs of symbols */
 }
 
 .attempt-symbol {
@@ -113,11 +113,11 @@ input, select, textarea, button {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   padding: 10px;
-  margin: 10px auto; /* Center clue box horizontally */
+  margin: 40px 30px 10px 30px; /* Center clue box horizontally */
   font-size: 1.2rem;
   border-radius: 5px;
   max-width: 400px; /* Optional: Add a max width */
-  line-height: 1.0; /* Adjust line height to keep text compact */
+  line-height: 0.1; /* Adjust line height to keep text compact */
 }
 
 #answer-box {
