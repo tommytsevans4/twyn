@@ -5,10 +5,13 @@ const startScreen = document.getElementById("start-screen");
 const gameContainer = document.getElementById("game-container");
 const playBtn = document.getElementById("play-btn");
 const levelButtons = document.querySelectorAll(".level-btn");
+const attemptSymbols = document.getElementById("attempt-symbols"); // Element for attempt symbols
 let selectedLevel = ""; // Store the selected difficulty level
 let correctAnswer = ""; // Store the correct answer fetched from the backend
 let currentIndex = 0; // Track the current letter position
 let currentClueData = {}; // Store the current clue data with definitions
+let attempts = 0; // Track the number of attempts
+const maxAttempts = 4; // Maximum number of attempts
 
 // Enable or disable the Play button based on level selection
 function updatePlayButtonState() {
@@ -68,6 +71,7 @@ function fetchClue() {
 
       console.log("Current Clue Data:", currentClueData);
       generateAnswerBoxes(correctAnswer);
+      initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
       console.error("Error fetching clue:", error);
@@ -76,6 +80,18 @@ function fetchClue() {
       const clueBox = document.getElementById("clue-box");
       clueBox.innerHTML = "<p>Failed to load clue. Please try again later.</p>";
     });
+}
+
+// Initialize attempt symbols
+function initializeAttempts() {
+  attemptSymbols.innerHTML = ""; // Clear existing symbols
+  for (let i = 0; i < maxAttempts; i++) {
+    const symbolPair = document.createElement("span");
+    symbolPair.className = "attempt-symbol";
+    symbolPair.textContent = "유유"; // Korean symbols
+    symbolPair.style.color = "#2F667F"; // Default color
+    attemptSymbols.appendChild(symbolPair);
+  }
 }
 
 // Generate answer boxes
@@ -194,10 +210,35 @@ function submitAnswer() {
     .join("")
     .trim();
   const isCorrect = userAnswer === correctAnswer.replace(/ /g, "").toUpperCase();
+
   console.log("Submitted Answer:", userAnswer, "Is Correct:", isCorrect);
 
-  // Navigate to results
-  showResultScreen(isCorrect);
+  if (isCorrect) {
+    // Correct answer: Proceed to the results screen
+    showResultScreen(true);
+    return;
+  }
+
+  // Incorrect answer: Handle attempts
+  attempts++;
+  if (attempts < maxAttempts) {
+    // Update the attempt symbol color for the current attempt
+    attemptSymbols.children[attempts - 1].style.color = "#5E8690";
+
+    // Clear letter boxes for the next attempt
+    clearLetterBoxes();
+    return;
+  }
+
+  // Max attempts reached: Proceed to the results screen
+  showResultScreen(false);
+}
+
+// Clear all letter boxes and reset the cursor
+function clearLetterBoxes() {
+  const letterBoxes = document.querySelectorAll(".letter-box");
+  letterBoxes.forEach((box) => (box.textContent = ""));
+  currentIndex = 0; // Reset cursor to the first box
 }
 
 // Display the results screen
@@ -209,14 +250,13 @@ function showResultScreen(isCorrect) {
   const resultScreen = document.createElement("div");
   resultScreen.className = "screen";
 
-    // Generate the definitions content dynamically
+  // Generate the definitions content dynamically
   const definitionContent = `
     <h3>Definitions</h3>
     <p><strong>${currentClueData.word1}</strong> (${currentClueData.partOfSpeech1}): ${currentClueData.definition1}</p>
     <p><strong>${currentClueData.word2}</strong> (${currentClueData.partOfSpeech2}): ${currentClueData.definition2}</p>
   `;
 
-  
   // Add the app header and results content
   resultScreen.innerHTML = `
     <header class="app-header">
@@ -257,6 +297,7 @@ function initGame() {
   startScreen.classList.remove("hidden");
   gameContainer.classList.add("hidden");
   selectedLevel = "";
+  attempts = 0; // Reset attempts
   updatePlayButtonState();
 }
 
