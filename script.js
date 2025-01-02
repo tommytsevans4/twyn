@@ -84,6 +84,11 @@ function fetchClue() {
 
 // Initialize attempt symbols
 function initializeAttempts() {
+  if (!attemptSymbols) {
+    console.error("Attempt symbols container not found!");
+    return;
+  }
+
   attemptSymbols.innerHTML = ""; // Clear existing symbols
   for (let i = 0; i < maxAttempts; i++) {
     const symbolPair = document.createElement("span");
