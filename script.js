@@ -228,7 +228,7 @@ function submitAnswer() {
   attempts++;
   if (attempts < maxAttempts) {
     // Update the attempt symbol color for the current attempt
-    attemptSymbols.children[attempts - 1].style.color = "#5E8690";
+    attemptSymbols.children[attempts - 1].style.color = "#f4f4f9";
 
     // Clear letter boxes for the next attempt
     clearLetterBoxes();
