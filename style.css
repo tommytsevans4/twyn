@@ -157,8 +157,8 @@ input, select, textarea, button {
   display: inline-flex; /* Ensure they are inline and flexible */
   align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */
-  width: 50px; /* Width of each box */
-  height: 50px; /* Height of each box */
+  width: 30px; /* Width of each box */
+  height: 30px; /* Height of each box */
   font-size: 1.5rem; /* Font size for text */
   font-weight: bold; /* Bold text */
   text-transform: uppercase; /* Ensure letters are uppercase */
