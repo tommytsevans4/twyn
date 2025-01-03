@@ -134,10 +134,10 @@ function generateAnswerBoxes(word1, connector, word2) {
 
   // Connector
   const connectorContainer = document.createElement("div");
-  connectorContainer.className = "word-container"; // Ensure it aligns like Word1 and Word2
+  connectorContainer.className = "connector-container"; // Add a specific class for connectors
   connector.split("").forEach((char) => {
     const connectorBox = document.createElement("span");
-    connectorBox.className = "letter-box"; // Use the same class
+    connectorBox.className = "connector-box"; // Use a different class
     connectorBox.textContent = char.toUpperCase(); // Show each letter of the connector
     connectorContainer.appendChild(connectorBox);
   });
