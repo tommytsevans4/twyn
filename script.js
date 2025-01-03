@@ -58,17 +58,13 @@ function fetchClue() {
       clueBox.appendChild(clueText);
 
       // Construct the full answer
-      const word1 = data.word1?.toUpperCase() || "WORD1";
-      const connector = data.connector?.toUpperCase() || "AND";
-      const word2 = data.word2?.toUpperCase() || "WORD2";
+      correctAnswer = `${data.word1} ${data.connector} ${data.word2}`.toUpperCase();
 
-      correctAnswer = `${word1} ${connector} ${word2}`;
-
-      // Safeguard for undefined fields
+      // Safeguard for undefined fields in definitions
       currentClueData = {
-        word1,
-        connector,
-        word2,
+        word1: data.word1 || "N/A",
+        connector: data.connector || "",
+        word2: data.word2 || "N/A",
         partOfSpeech1: data.partOfSpeech1 || "N/A",
         definition1: data.definition1 || "Definition not available",
         partOfSpeech2: data.partOfSpeech2 || "N/A",
@@ -76,7 +72,7 @@ function fetchClue() {
       };
 
       console.log("Current Clue Data:", currentClueData);
-      generateAnswerBoxes(word1, connector, word2);
+      generateAnswerBoxes(data.word1, data.word2, data.connector);
       initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
