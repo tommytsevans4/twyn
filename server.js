@@ -14,21 +14,21 @@ app.use(express.json());
 const hardcodedClues = [
   {
     clue: "Illegally acquire metal",
-    answer: "STEAL THE STEEL",
     word1: "STEAL",
+    connector: "THE",
+    word2: "STEEL",
     partOfSpeech1: "verb",
     definition1: "Take another's property illegally.",
-    word2: "STEEL",
     partOfSpeech2: "noun",
     definition2: "A metal alloy primarily made of iron."
   },
   {
     clue: "Bark of a tree or sound of a dog",
-    answer: "BARK THE BARK",
     word1: "BARK",
+    connector: "THE",
+    word2: "BARK",
     partOfSpeech1: "noun",
     definition1: "The outer covering of a tree.",
-    word2: "BARK",
     partOfSpeech2: "verb",
     definition2: "The sound made by a dog."
   }
@@ -46,15 +46,15 @@ app.get('/clue', async (req, res) => {
     // Parse CSV rows into clue objects
     const rows = response.data.split('\n').slice(1); // Skip the header row
     const clues = rows.map(row => {
-      const [clue, answer, word1, partOfSpeech1, definition1, word2, partOfSpeech2, definition2] = row.split(',');
-      if (clue && answer && word1 && partOfSpeech1 && definition1 && word2 && partOfSpeech2 && definition2) {
+      const [clue, word1, connector, word2, partOfSpeech1, definition1, partOfSpeech2, definition2] = row.split(',');
+      if (clue && word1 && connector && word2 && partOfSpeech1 && definition1 && partOfSpeech2 && definition2) {
         return {
           clue: clue.trim(),
-          answer: answer.trim(),
           word1: word1.trim(),
+          connector: connector.trim(),
+          word2: word2.trim(),
           partOfSpeech1: partOfSpeech1.trim(),
           definition1: definition1.trim(),
-          word2: word2.trim(),
           partOfSpeech2: partOfSpeech2.trim(),
           definition2: definition2.trim()
         };
