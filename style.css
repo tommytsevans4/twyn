@@ -133,9 +133,13 @@ input, select, textarea, button {
 }
 
 .connector-text {
+  display: inline-block;
   text-align: center;
+  font-size: 1.5rem; /* Match the font size of .letter-box */
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: 10px 0; /* Add consistent spacing */
+  color: #2F667F; /* Match the color */
+  letter-spacing: 0.2em; /* Match the letter spacing */
 }
 
 #answer-box {
