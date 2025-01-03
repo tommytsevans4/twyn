@@ -44,7 +44,6 @@ function fetchClue() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("Clue fetched successfully");
       return response.json();
     })
     .then((data) => {
@@ -57,18 +56,17 @@ function fetchClue() {
       clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
-      // Safeguard data
-      const word1 = data.word1 || "MISSING";
-      const connector = data.connector || "MISSING";
-      const word2 = data.word2 || "MISSING";
+      // Ensure columns are being used correctly
+      const word1 = data.word1?.trim() || "N/A";
+      const connector = data.connector?.trim() || "N/A";
+      const word2 = data.word2?.trim() || "N/A";
 
-      // Build the full answer
       const fullAnswer = `${word1} ${connector} ${word2}`.toUpperCase();
       correctAnswer = `${word1} ${word2}`.toUpperCase(); // Player only guesses words
       console.log("Full Answer:", fullAnswer);
       console.log("Correct Answer (for input):", correctAnswer);
 
-      // Update current clue data
+      // Safeguard for undefined fields
       currentClueData = {
         word1: word1,
         partOfSpeech1: data.partOfSpeech1 || "N/A",
@@ -114,15 +112,6 @@ function initializeAttempts() {
 // Generate answer boxes
 function generateAnswerBoxes(word1, connector, word2) {
   console.log("Generating answer boxes for:", word1, connector, word2);
-
-  if (!word1 || !word2 || !connector) {
-    console.error("One or more required parameters are missing:", {
-      word1,
-      connector,
-      word2,
-    });
-    return;
-  }
 
   answerBox.innerHTML = ""; // Clear previous boxes
 
