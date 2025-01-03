@@ -57,27 +57,27 @@ function fetchClue() {
       clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
-      // Safeguard values and provide default empty strings if undefined
-      const word1 = data.word1 || "";
-      const connector = data.connector || "";
-      const word2 = data.word2 || "";
+      // Build the full answer
+      const fullAnswer = `${data.word1} ${data.connector} ${data.word2}`.toUpperCase();
+      correctAnswer = `${data.word1} ${data.word2}`.toUpperCase(); // Player only guesses words
+      console.log("Full Answer:", fullAnswer);
+      console.log("Correct Answer (for input):", correctAnswer);
 
-      // Construct the full answer
-      correctAnswer = `${word1} ${connector} ${word2}`.toUpperCase();
-
-      // Safeguard for undefined fields in definitions
+      // Safeguard for undefined fields
       currentClueData = {
-        word1: word1 || "N/A",
-        connector: connector || "",
-        word2: word2 || "N/A",
+        word1: data.word1 || "N/A",
         partOfSpeech1: data.partOfSpeech1 || "N/A",
         definition1: data.definition1 || "Definition not available",
+        word2: data.word2 || "N/A",
         partOfSpeech2: data.partOfSpeech2 || "N/A",
         definition2: data.definition2 || "Definition not available",
+        connector: data.connector || "N/A", // Include the connector
       };
 
       console.log("Current Clue Data:", currentClueData);
-      generateAnswerBoxes(word1, word2, connector);
+
+      // Generate answer boxes
+      generateAnswerBoxes(data.word1, data.connector, data.word2);
       initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
@@ -107,16 +107,12 @@ function initializeAttempts() {
 }
 
 // Generate answer boxes
-function generateAnswerBoxes(word1, word2, connector) {
+function generateAnswerBoxes(word1, connector, word2) {
   console.log("Generating answer boxes for:", word1, connector, word2);
-  if (!word1 || !word2) {
-    console.error("Error: Missing word1 or word2 for generating answer boxes.");
-    return;
-  }
 
   answerBox.innerHTML = ""; // Clear previous boxes
 
-  // Create letter boxes for word1
+  // Word1
   const word1Container = document.createElement("div");
   word1Container.className = "word-container";
   word1.split("").forEach(() => {
@@ -127,13 +123,13 @@ function generateAnswerBoxes(word1, word2, connector) {
   });
   answerBox.appendChild(word1Container);
 
-  // Add the connector text
+  // Connector
   const connectorText = document.createElement("div");
-  connectorText.className = "connector";
+  connectorText.className = "connector-text";
   connectorText.textContent = connector.toUpperCase();
   answerBox.appendChild(connectorText);
 
-  // Create letter boxes for word2
+  // Word2
   const word2Container = document.createElement("div");
   word2Container.className = "word-container";
   word2.split("").forEach(() => {
@@ -144,7 +140,7 @@ function generateAnswerBoxes(word1, word2, connector) {
   });
   answerBox.appendChild(word2Container);
 
-  console.log("Final content of #answer-box:", answerBox.innerHTML);
+  console.log("Answer boxes generated");
 }
 
 // Handle keyboard input
@@ -290,7 +286,7 @@ function showResultScreen(isCorrect) {
     </header>
     <div class="results-content">
       <h1>${isCorrect ? "Correct!" : "Wrong!"}</h1>
-      <div class="answer-display">${correctAnswer}</div>
+      <div class="answer-display">${currentClueData.word1.toUpperCase()} ${currentClueData.connector.toUpperCase()} ${currentClueData.word2.toUpperCase()}</div>
       <div class="definitions">
         ${definitionContent}
       </div>
