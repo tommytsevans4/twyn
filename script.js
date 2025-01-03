@@ -57,20 +57,26 @@ function fetchClue() {
       clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
-      correctAnswer = data.answer?.toUpperCase() || "ANSWER";
+      // Construct the full answer
+      const word1 = data.word1?.toUpperCase() || "WORD1";
+      const connector = data.connector?.toUpperCase() || "AND";
+      const word2 = data.word2?.toUpperCase() || "WORD2";
+
+      correctAnswer = `${word1} ${connector} ${word2}`;
 
       // Safeguard for undefined fields
       currentClueData = {
-        word1: data.word1 || "N/A",
+        word1,
+        connector,
+        word2,
         partOfSpeech1: data.partOfSpeech1 || "N/A",
         definition1: data.definition1 || "Definition not available",
-        word2: data.word2 || "N/A",
         partOfSpeech2: data.partOfSpeech2 || "N/A",
         definition2: data.definition2 || "Definition not available",
       };
 
       console.log("Current Clue Data:", currentClueData);
-      generateAnswerBoxes(correctAnswer);
+      generateAnswerBoxes(word1, connector, word2);
       initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
@@ -101,30 +107,37 @@ function initializeAttempts() {
 }
 
 // Generate answer boxes
-function generateAnswerBoxes(answer) {
-  console.log("Generating answer boxes for:", answer);
+function generateAnswerBoxes(word1, connector, word2) {
+  console.log("Generating answer boxes for:", word1, connector, word2);
   answerBox.innerHTML = ""; // Clear previous boxes
-  const words = answer.split(" ");
-  words.forEach((word, wordIndex) => {
-    const wordContainer = document.createElement("div");
-    wordContainer.className = "word-container";
 
-    word.split("").forEach(() => {
-      const box = document.createElement("span");
-      box.className = "letter-box"; // Add the class
-      box.textContent = ""; // Empty placeholder
-      wordContainer.appendChild(box);
-    });
-
-    answerBox.appendChild(wordContainer);
-
-    if (wordIndex < words.length - 1) {
-      const spacer = document.createElement("div");
-      spacer.className = "spacer";
-      spacer.style.width = "20px";
-      answerBox.appendChild(spacer);
-    }
+  // Generate boxes for word1
+  const word1Container = document.createElement("div");
+  word1Container.className = "word-container";
+  word1.split("").forEach(() => {
+    const box = document.createElement("span");
+    box.className = "letter-box";
+    box.textContent = "";
+    word1Container.appendChild(box);
   });
+  answerBox.appendChild(word1Container);
+
+  // Display the connector
+  const connectorText = document.createElement("p");
+  connectorText.className = "connector";
+  connectorText.textContent = connector;
+  answerBox.appendChild(connectorText);
+
+  // Generate boxes for word2
+  const word2Container = document.createElement("div");
+  word2Container.className = "word-container";
+  word2.split("").forEach(() => {
+    const box = document.createElement("span");
+    box.className = "letter-box";
+    box.textContent = "";
+    word2Container.appendChild(box);
+  });
+  answerBox.appendChild(word2Container);
 
   console.log("Final content of #answer-box:", answerBox.innerHTML);
 }
@@ -215,7 +228,9 @@ function submitAnswer() {
     .map((box) => box.textContent)
     .join("")
     .trim();
-  const isCorrect = userAnswer === correctAnswer.replace(/ /g, "").toUpperCase();
+  const isCorrect =
+    userAnswer ===
+    `${currentClueData.word1}${currentClueData.word2}`.replace(/ /g, "").toUpperCase();
 
   console.log("Submitted Answer:", userAnswer, "Is Correct:", isCorrect);
 
@@ -228,7 +243,7 @@ function submitAnswer() {
   // Incorrect answer: Handle attempts
   attempts++;
   if (attempts < maxAttempts) {
-    // Update the attempt symbol color for the current attempt
+    // Update the attempt symbol opacity for the current attempt
     attemptSymbols.children[attempts - 1].style.opacity = "0.3";
 
     // Clear letter boxes for the next attempt
