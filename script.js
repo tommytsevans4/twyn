@@ -102,34 +102,34 @@ function initializeAttempts() {
 }
 
 // Generate answer boxes
-function generateAnswerBoxes(word1, connector, word2) {
+function generateAnswerBoxes(word1, word2, connector) {
   console.log("Generating answer boxes for:", word1, connector, word2);
   answerBox.innerHTML = ""; // Clear previous boxes
 
-  // Generate boxes for word1
+  // Create letter boxes for word1
   const word1Container = document.createElement("div");
   word1Container.className = "word-container";
   word1.split("").forEach(() => {
     const box = document.createElement("span");
     box.className = "letter-box";
-    box.textContent = "";
+    box.textContent = ""; // Empty placeholder
     word1Container.appendChild(box);
   });
   answerBox.appendChild(word1Container);
 
-  // Display the connector
-  const connectorText = document.createElement("p");
+  // Add the connector text
+  const connectorText = document.createElement("div");
   connectorText.className = "connector";
-  connectorText.textContent = connector;
+  connectorText.textContent = connector.toUpperCase();
   answerBox.appendChild(connectorText);
 
-  // Generate boxes for word2
+  // Create letter boxes for word2
   const word2Container = document.createElement("div");
   word2Container.className = "word-container";
   word2.split("").forEach(() => {
     const box = document.createElement("span");
     box.className = "letter-box";
-    box.textContent = "";
+    box.textContent = ""; // Empty placeholder
     word2Container.appendChild(box);
   });
   answerBox.appendChild(word2Container);
