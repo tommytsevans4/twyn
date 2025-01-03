@@ -57,27 +57,32 @@ function fetchClue() {
       clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
+      // Safeguard data
+      const word1 = data.word1 || "MISSING";
+      const connector = data.connector || "MISSING";
+      const word2 = data.word2 || "MISSING";
+
       // Build the full answer
-      const fullAnswer = `${data.word1} ${data.connector} ${data.word2}`.toUpperCase();
-      correctAnswer = `${data.word1} ${data.word2}`.toUpperCase(); // Player only guesses words
+      const fullAnswer = `${word1} ${connector} ${word2}`.toUpperCase();
+      correctAnswer = `${word1} ${word2}`.toUpperCase(); // Player only guesses words
       console.log("Full Answer:", fullAnswer);
       console.log("Correct Answer (for input):", correctAnswer);
 
-      // Safeguard for undefined fields
+      // Update current clue data
       currentClueData = {
-        word1: data.word1 || "N/A",
+        word1: word1,
         partOfSpeech1: data.partOfSpeech1 || "N/A",
         definition1: data.definition1 || "Definition not available",
-        word2: data.word2 || "N/A",
+        word2: word2,
         partOfSpeech2: data.partOfSpeech2 || "N/A",
         definition2: data.definition2 || "Definition not available",
-        connector: data.connector || "N/A", // Include the connector
+        connector: connector,
       };
 
       console.log("Current Clue Data:", currentClueData);
 
       // Generate answer boxes
-      generateAnswerBoxes(data.word1, data.connector, data.word2);
+      generateAnswerBoxes(word1, connector, word2);
       initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
@@ -109,6 +114,15 @@ function initializeAttempts() {
 // Generate answer boxes
 function generateAnswerBoxes(word1, connector, word2) {
   console.log("Generating answer boxes for:", word1, connector, word2);
+
+  if (!word1 || !word2 || !connector) {
+    console.error("One or more required parameters are missing:", {
+      word1,
+      connector,
+      word2,
+    });
+    return;
+  }
 
   answerBox.innerHTML = ""; // Clear previous boxes
 
