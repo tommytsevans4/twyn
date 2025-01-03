@@ -57,14 +57,19 @@ function fetchClue() {
       clueText.textContent = data.clue || "Clue not available";
       clueBox.appendChild(clueText);
 
+      // Safeguard values and provide default empty strings if undefined
+      const word1 = data.word1 || "";
+      const connector = data.connector || "";
+      const word2 = data.word2 || "";
+
       // Construct the full answer
-      correctAnswer = `${data.word1} ${data.connector} ${data.word2}`.toUpperCase();
+      correctAnswer = `${word1} ${connector} ${word2}`.toUpperCase();
 
       // Safeguard for undefined fields in definitions
       currentClueData = {
-        word1: data.word1 || "N/A",
-        connector: data.connector || "",
-        word2: data.word2 || "N/A",
+        word1: word1 || "N/A",
+        connector: connector || "",
+        word2: word2 || "N/A",
         partOfSpeech1: data.partOfSpeech1 || "N/A",
         definition1: data.definition1 || "Definition not available",
         partOfSpeech2: data.partOfSpeech2 || "N/A",
@@ -72,7 +77,7 @@ function fetchClue() {
       };
 
       console.log("Current Clue Data:", currentClueData);
-      generateAnswerBoxes(data.word1, data.word2, data.connector);
+      generateAnswerBoxes(word1, word2, connector);
       initializeAttempts(); // Initialize attempts
     })
     .catch((error) => {
@@ -104,6 +109,11 @@ function initializeAttempts() {
 // Generate answer boxes
 function generateAnswerBoxes(word1, word2, connector) {
   console.log("Generating answer boxes for:", word1, connector, word2);
+  if (!word1 || !word2) {
+    console.error("Error: Missing word1 or word2 for generating answer boxes.");
+    return;
+  }
+
   answerBox.innerHTML = ""; // Clear previous boxes
 
   // Create letter boxes for word1
