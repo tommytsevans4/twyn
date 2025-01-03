@@ -125,6 +125,7 @@ function generateAnswerBoxes(word1, connector, word2) {
   // Display the connector
   const connectorText = document.createElement("p");
   connectorText.className = "connector";
+  connectorText.style.margin = "10px 0"; // Add spacing between word1 and word2
   connectorText.textContent = connector;
   answerBox.appendChild(connectorText);
 
