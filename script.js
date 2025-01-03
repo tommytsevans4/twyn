@@ -100,8 +100,7 @@ function initializeAttempts() {
     const symbolPair = document.createElement("span");
     symbolPair.className = "attempt-symbol";
     symbolPair.textContent = "유유"; // Korean symbols
-    symbolPair.style.color = "#2F667F"; // Default color
-    symbolPair.style.opacity = "1"; // Default opacity
+    symbolPair.style.opacity = 1; // Default opacity
     attemptSymbols.appendChild(symbolPair);
   }
 }
@@ -125,7 +124,6 @@ function generateAnswerBoxes(word1, connector, word2) {
   // Display the connector
   const connectorText = document.createElement("p");
   connectorText.className = "connector";
-  connectorText.style.margin = "10px 0"; // Add spacing between word1 and word2
   connectorText.textContent = connector;
   answerBox.appendChild(connectorText);
 
@@ -245,7 +243,7 @@ function submitAnswer() {
   attempts++;
   if (attempts < maxAttempts) {
     // Update the attempt symbol opacity for the current attempt
-    attemptSymbols.children[attempts - 1].style.opacity = "0.3";
+    attemptSymbols.children[attempts - 1].style.opacity = "0.5";
 
     // Clear letter boxes for the next attempt
     clearLetterBoxes();
