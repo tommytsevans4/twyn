@@ -120,6 +120,21 @@ input, select, textarea, button {
   line-height: 0.1; /* Adjust line height to keep text compact */
 }
 
+.connector-container {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.connector-box {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2F667F;
+  letter-spacing: 0.2em;
+  text-decoration: none; /* Remove underline */
+  border-bottom: none; /* Explicitly remove the underline effect */
+}
+
 .connector {
   font-size: 1.5rem;
   color: #2F667F; /* Or any desired color */
