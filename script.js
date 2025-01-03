@@ -109,8 +109,7 @@ function initializeAttempts() {
   }
 }
 
-// Generate answer boxes
-// Generate answer boxes with line breaks
+// Generate answer boxes with matched formatting
 function generateAnswerBoxes(word1, connector, word2) {
   console.log("Generating answer boxes for:", word1, connector, word2);
 
@@ -134,10 +133,15 @@ function generateAnswerBoxes(word1, connector, word2) {
   answerBox.appendChild(lineBreak1);
 
   // Connector
-  const connectorText = document.createElement("div");
-  connectorText.className = "connector-text";
-  connectorText.textContent = connector.toUpperCase();
-  answerBox.appendChild(connectorText);
+  const connectorContainer = document.createElement("div");
+  connectorContainer.className = "word-container"; // Ensure it aligns like Word1 and Word2
+  connector.split("").forEach((char) => {
+    const connectorBox = document.createElement("span");
+    connectorBox.className = "letter-box"; // Use the same class
+    connectorBox.textContent = char.toUpperCase(); // Show each letter of the connector
+    connectorContainer.appendChild(connectorBox);
+  });
+  answerBox.appendChild(connectorContainer);
 
   // Line break after Connector
   const lineBreak2 = document.createElement("div");
