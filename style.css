@@ -120,6 +120,13 @@ input, select, textarea, button {
   line-height: 0.1; /* Adjust line height to keep text compact */
 }
 
+.connector {
+  font-size: 1.5rem;
+  color: #2F667F; /* Or any desired color */
+  margin: 10px 0;
+  text-align: center;
+}
+
 .connector-text {
   font-size: 1.5rem;
   font-weight: bold;
